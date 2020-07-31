@@ -2,6 +2,7 @@ package backCode; /*** In The Name of Allah ***/
 
 import graphic.GameFrame;
 import graphic.GameLoop;
+import graphic.MenuFrame;
 import graphic.ThreadPool;
 
 import java.awt.*;
@@ -20,7 +21,7 @@ public class Main {
 
 
         // Show the game menu ...
-//        new MenuFrame();
+        new MenuFrame();
 
         // After the player clicks 'PLAY' ...
         EventQueue.invokeLater(new Runnable() {
