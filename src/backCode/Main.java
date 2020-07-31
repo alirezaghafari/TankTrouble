@@ -1,9 +1,6 @@
 package backCode; /*** In The Name of Allah ***/
 
-import graphic.GameFrame;
-import graphic.GameLoop;
-import graphic.MenuFrame;
-import graphic.ThreadPool;
+import graphic.*;
 
 import java.awt.*;
 import javax.swing.*;
@@ -21,7 +18,11 @@ public class Main {
 
 
         // Show the game menu ...
-        new MenuFrame();
+        MenuFrame fr=MenuFrame.getInstance();
+         new LoginFrame();
+
+
+
 
         // After the player clicks 'PLAY' ...
         EventQueue.invokeLater(new Runnable() {
