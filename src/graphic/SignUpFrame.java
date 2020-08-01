@@ -45,14 +45,15 @@ public class SignUpFrame extends JFrame {
         passwordField.setBackground(Color.gray);
         passwordField.setForeground(Color.white);
 
+        checkBox= new JCheckBox();
+        checkBox.setSize(22,22);
+        checkBox.setLocation(175,290);
+
         JLabel label=new JLabel("Remember me");
         label.setForeground(Color.white);
         label.setLocation(200,280);
         label.setSize(100,40);
 
-        checkBox=new JCheckBox();
-        checkBox.setSize(20,20);
-        checkBox.setLocation(175,290);
 
         signUpButton=new JButton("Sign up");
         signUpButton.setLocation(363,300);
@@ -70,6 +71,9 @@ public class SignUpFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 SignUpFrame.this.setVisible(false);
                 SignInFrame.getInstance().setVisible(true);
+                userNameField.setText("  USERNAME:");
+                passwordField.setText("  PASSWORD:");
+                checkBox.setSelected(false);
             }
         });
 
@@ -77,8 +81,8 @@ public class SignUpFrame extends JFrame {
         add(userNameField);
         add(passwordField);
         add(signUpButton);
-        add(label);
         add(checkBox);
+        add(label);
 
     }
 
@@ -91,8 +95,8 @@ public class SignUpFrame extends JFrame {
         private final String hint;
         private boolean showingHint;
 
-        public HintTextField(final String hint) {
-            super(hint);
+        public HintTextField( String hint) {
+            super.setText(hint);
             this.hint = hint;
             this.showingHint = true;
             super.addFocusListener(this);
@@ -100,7 +104,7 @@ public class SignUpFrame extends JFrame {
 
         @Override
         public void focusGained(FocusEvent e) {
-            if(this.getText().isEmpty()) {
+            if(this.getText().isEmpty()||this.getText().equals("  PASSWORD:")||this.getText().equals("  USERNAME:")) {
                 super.setText("");
                 showingHint = false;
             }

@@ -61,7 +61,8 @@ public class SignInFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 SignInFrame.this.setVisible(false);
                 SignUpFrame.getInstance().setVisible(true);
-                
+                userNameField.setText("  USERNAME:");
+                passwordField.setText("  PASSWORD:");
             }
         });
 
@@ -82,8 +83,8 @@ public class SignInFrame extends JFrame {
         private final String hint;
         private boolean showingHint;
 
-        public HintTextField(final String hint) {
-            super(hint);
+        public HintTextField( String hint) {
+            super.setText(hint);
             this.hint = hint;
             this.showingHint = true;
             super.addFocusListener(this);
@@ -91,7 +92,7 @@ public class SignInFrame extends JFrame {
 
         @Override
         public void focusGained(FocusEvent e) {
-            if(this.getText().isEmpty()) {
+            if(this.getText().isEmpty()||this.getText().equals("  PASSWORD:")||this.getText().equals("  USERNAME:")) {
                 super.setText("");
                 showingHint = false;
             }
