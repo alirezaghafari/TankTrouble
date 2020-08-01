@@ -11,6 +11,7 @@ public class LoginFrame extends JFrame {
     JTextField passwordField;
     JCheckBox checkBox;
     JButton signUpButton;
+    JButton signInButton;
     public LoginFrame(){
         super("Login");
         setSize(600,360);
@@ -55,11 +56,19 @@ public class LoginFrame extends JFrame {
         signUpButton.setSize(90,20);
         signUpButton.setForeground(Color.darkGray);
 
-        add(label);
-        add(checkBox);
+
+        Icon signIn = new ImageIcon("Documents/images/signInBackground.jpg");
+        signInButton=new JButton(signIn);
+        signInButton.setLocation(20,20);
+        signInButton.setSize(70,21);
+        signInButton.setForeground(Color.white);
+
+        add(signInButton);
         add(userNameField);
         add(passwordField);
         add(signUpButton);
+        add(label);
+        add(checkBox);
 
     }
 
