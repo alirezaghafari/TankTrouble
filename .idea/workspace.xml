@@ -3,12 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="f333d852-8d30-410c-87b3-6a8006cafc40" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documents/images/LoginBackground.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/images/LoginBackground.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/backCode/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/backCode/Main$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/graphic/LoginFrame$HintTextField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/graphic/LoginFrame$HintTextField.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/graphic/LoginFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/graphic/LoginFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backCode/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/backCode/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphic/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/LoginFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Documents/images/UserIcon.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/images/UserIcon.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/graphic/MenuFrame$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/graphic/MenuFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/graphic/MenuFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/MenuFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/MenuFrame.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -76,7 +74,7 @@
       <option name="presentableId" value="Default" />
       <updated>1596140594349</updated>
       <workItem from="1596140597614" duration="1259000" />
-      <workItem from="1596145972938" duration="21481000" />
+      <workItem from="1596145972938" duration="24515000" />
     </task>
     <servers />
   </component>
