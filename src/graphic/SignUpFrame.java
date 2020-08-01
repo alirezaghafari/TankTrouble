@@ -3,16 +3,19 @@ package graphic;
 import javax.swing.*;
 import java.awt.*;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-public class LoginFrame extends JFrame {
-    JTextField userNameField;
-    JTextField passwordField;
-    JCheckBox checkBox;
-    JButton signUpButton;
-    JButton signInButton;
-    public LoginFrame(){
+public class SignUpFrame extends JFrame {
+    private JTextField userNameField;
+    private JTextField passwordField;
+    private JCheckBox checkBox;
+    private JButton signUpButton;
+    private JButton signInButton;
+    private static SignUpFrame signUpFrame;
+    private SignUpFrame(){
         super("Login");
         setSize(600,360);
         setResizable(false);
@@ -62,6 +65,13 @@ public class LoginFrame extends JFrame {
         signInButton.setLocation(20,20);
         signInButton.setSize(70,21);
         signInButton.setForeground(Color.white);
+        signInButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SignUpFrame.this.setVisible(false);
+                SignInFrame.getInstance().setVisible(true);
+            }
+        });
 
         add(signInButton);
         add(userNameField);
@@ -109,4 +119,10 @@ public class LoginFrame extends JFrame {
         }
     }
 
+    public static SignUpFrame getInstance(){
+        if(signUpFrame==null)
+            return signUpFrame=new SignUpFrame();
+        else
+            return signUpFrame;
+    }
 }
