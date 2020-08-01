@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f333d852-8d30-410c-87b3-6a8006cafc40" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/graphic/SignInFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documents/images/LogOutIcon.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/images/LogOutIcon.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documents/images/UserIcon.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/images/UserIcon.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documents/images/signInBackground.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/images/signInBackground.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/backCode/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/backCode/Main$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/backCode/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/backCode/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backCode/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/backCode/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphic/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/SignUpFrame.java" afterDir="false" />
-    </list>
+    <list default="true" id="f333d852-8d30-410c-87b3-6a8006cafc40" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

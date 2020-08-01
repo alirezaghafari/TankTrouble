@@ -6,9 +6,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 
+/**
+ * The frame which contains start buttons and options
+ */
 public class MenuFrame extends JFrame {
     private String userName="user1";
     private static MenuFrame menuFrame;
+    private JButton logOutButton;
+    private JButton singlePlayerButton;
+    private JButton multiPlayerButton;
+    private JButton optionsButton;
     private MenuFrame(){
         super("TANK TROUBLE");
         setSize(1275,735);
@@ -32,7 +39,7 @@ public class MenuFrame extends JFrame {
         add(userIcon);
 
         Icon logoutIcon = new ImageIcon("Documents/images/LogOutIcon.jpg");
-        JButton logOutButton=new JButton(logoutIcon);
+        logOutButton=new JButton(logoutIcon);
         logOutButton.setLocation(1160,70);
         logOutButton.setSize(89,30);
 
@@ -46,20 +53,20 @@ public class MenuFrame extends JFrame {
 
 
         Icon singleIcon = new ImageIcon("Documents/images/SinglePlayerIcon.jpg");
-        JButton singlePlayerButton=new JButton(singleIcon);
+        singlePlayerButton=new JButton(singleIcon);
         singlePlayerButton.setLocation(290,600);
         singlePlayerButton.setSize(200,80);
 
 
         Icon multiIcon = new ImageIcon("Documents/images/MultiIcon.jpg");
-        JButton multiPlayerButton=new JButton(multiIcon);
+        multiPlayerButton=new JButton(multiIcon);
         multiPlayerButton.setLocation(545,600);
         multiPlayerButton.setSize(200,80);
 
 
 
         Icon optionsIcon = new ImageIcon("Documents/images/OptionsIcon.jpg");
-        JButton optionsButton=new JButton(optionsIcon);
+        optionsButton=new JButton(optionsIcon);
         optionsButton.setLocation(800,600);
         optionsButton.setSize(200,80);
 
