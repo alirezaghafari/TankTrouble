@@ -4,8 +4,6 @@ package frontCode;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.Objects;
 import javax.swing.*;
 
@@ -18,6 +16,9 @@ public class InfoPanel extends JPanel {
     private JLabel userNameLabel;
     private JLabel userIcon;
     private static String userName="user1";
+    private static String timePlayed="00:00";
+    private int multiWins=2,multiLosses=4,singleWins=3,singleLosses=1;
+    private static JLabel timeLabel;
 
     private InfoPanel() {
         setLayout(null);
@@ -170,9 +171,57 @@ public class InfoPanel extends JPanel {
         userNameLabel.setFont(new Font("Comic Sans MS", 10, 28));
         userNameLabel.setForeground(Color.white);
 
+        timeLabel=new JLabel("<html>Hours you have played:<br>&#160; &#160;&#160;&#160;&#160;"+timePlayed+"</html>");
+        timeLabel.setFont(new Font("Comic Sans MS", 10, 22));
+        timeLabel.setSize(200,160);
+        timeLabel.setLocation(15,110);
+        timeLabel.setForeground(Color.white);
+
+
+        JLabel singlePlayerLabel=new JLabel("Single player");
+        singlePlayerLabel.setFont(new Font("Comic Sans MS", 10, 24));
+        singlePlayerLabel.setSize(200,30);
+        singlePlayerLabel.setLocation(15,280);
+        singlePlayerLabel.setForeground(Color.white);
+
+        JLabel singleWinsAndLosses=new JLabel("<html>Wins: "+singleWins+"<br>Losses: "+singleLosses+"</html>");
+        singleWinsAndLosses.setFont(new Font("Comic Sans MS", 10, 18));
+        singleWinsAndLosses.setSize(200,60);
+        singleWinsAndLosses.setLocation(55,310);
+        singleWinsAndLosses.setForeground(Color.white);
+
+
+        JLabel multiPlayerLabel=new JLabel("Multi player");
+        multiPlayerLabel.setFont(new Font("Comic Sans MS", 10, 24));
+        multiPlayerLabel.setSize(200,30);
+        multiPlayerLabel.setLocation(15,390);
+        multiPlayerLabel.setForeground(Color.white);
+
+
+        JLabel multiWinsAndLosses=new JLabel("<html>Wins: "+multiWins+"<br>Losses: "+multiLosses+"</html>");
+        multiWinsAndLosses.setFont(new Font("Comic Sans MS", 10, 18));
+        multiWinsAndLosses.setSize(200,60);
+        multiWinsAndLosses.setLocation(55,420);
+        multiWinsAndLosses.setForeground(Color.white);
+
+
+
         add(userNameLabel);
         add(userIcon);
         add(goBackIcon);
+        add(timeLabel);
+        add(singlePlayerLabel);
+        add(singleWinsAndLosses);
+        add(multiPlayerLabel);
+        add(multiWinsAndLosses);
+
     }
 
+    public static void setUserName(String userName) {
+        InfoPanel.userName = userName;
+    }
+
+    public static void setTimePlayed(String timePlayed) {
+        InfoPanel.timePlayed = timePlayed;
+    }
 }
