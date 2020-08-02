@@ -1,4 +1,4 @@
-package graphic;
+package frontCode;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,14 +8,16 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-public class SignUpFrame extends JFrame {
-    private JTextField userNameField;
-    private JTextField passwordField;
-    private JCheckBox checkBox;
-    private JButton signUpButton;
-    private JButton signInButton;
-    private static SignUpFrame signUpFrame;
-    private SignUpFrame(){
+public class SignInFrame extends JFrame {
+    private static JTextField userNameField;
+    private static JTextField passwordField;
+    private static JButton signUpButton;
+    private static JButton signInButton;
+
+    //this is to implement singleton design pattern
+    private static SignInFrame signInFrame;
+
+    private SignInFrame(){
         super("Login");
         setSize(600,360);
         setResizable(false);
@@ -45,35 +47,32 @@ public class SignUpFrame extends JFrame {
         passwordField.setBackground(Color.gray);
         passwordField.setForeground(Color.white);
 
-        checkBox= new JCheckBox();
-        checkBox.setSize(22,22);
-        checkBox.setLocation(175,290);
 
-        JLabel label=new JLabel("Remember me");
-        label.setForeground(Color.white);
-        label.setLocation(200,280);
-        label.setSize(100,40);
-
-
-        signUpButton=new JButton("Sign up");
-        signUpButton.setLocation(363,300);
-        signUpButton.setSize(90,20);
-        signUpButton.setForeground(Color.darkGray);
-
-
-        Icon signIn = new ImageIcon("Documents/images/signInBackground.jpg");
-        signInButton=new JButton(signIn);
-        signInButton.setLocation(20,20);
-        signInButton.setSize(70,21);
-        signInButton.setForeground(Color.white);
+        signInButton=new JButton("Sign in");
+        signInButton.setLocation(363,300);
+        signInButton.setSize(90,20);
+        signInButton.setForeground(Color.darkGray);
         signInButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SignUpFrame.this.setVisible(false);
-                SignInFrame.getInstance().setVisible(true);
-                userNameField.setText("  USERNAME:");
-                passwordField.setText("  PASSWORD:");
-                checkBox.setSelected(false);
+                if(true){
+                    hideFrame();
+                    MenuFrame.showFrame();
+                }
+            }
+        });
+
+
+        Icon signUpIcon = new ImageIcon("Documents/images/signUpBackground.jpg");
+        signUpButton=new JButton(signUpIcon);
+        signUpButton.setLocation(20,20);
+        signUpButton.setSize(70,21);
+        signUpButton.setForeground(Color.white);
+        signUpButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                hideFrame();
+                SignUpFrame.showFrame();
             }
         });
 
@@ -81,8 +80,7 @@ public class SignUpFrame extends JFrame {
         add(userNameField);
         add(passwordField);
         add(signUpButton);
-        add(checkBox);
-        add(label);
+
 
     }
 
@@ -123,10 +121,25 @@ public class SignUpFrame extends JFrame {
         }
     }
 
-    public static SignUpFrame getInstance(){
-        if(signUpFrame==null)
-            return signUpFrame=new SignUpFrame();
+    public static SignInFrame getInstance(){
+        if(signInFrame==null)
+            return signInFrame=new SignInFrame();
         else
-            return signUpFrame;
+            return signInFrame;
+    }
+
+
+    public static void showFrame(){
+        SignInFrame signInFrame=SignInFrame.getInstance();
+        SignUpFrame.getInstance().setLocationRelativeTo(null);
+        userNameField.setText("  USERNAME:");
+        passwordField.setText("  PASSWORD:");
+        signInFrame.setVisible(true);
+        signInFrame.revalidate();
+        signInFrame.repaint();
+    }
+    public static void hideFrame(){
+        SignInFrame signInFrame=SignInFrame.getInstance();
+        signInFrame.setVisible(false);
     }
 }
