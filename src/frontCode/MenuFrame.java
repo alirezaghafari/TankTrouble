@@ -8,8 +8,6 @@ import java.awt.event.*;
  * The frame which contains start buttons and options
  */
 public class MenuFrame extends JFrame {
-    private static JButton logOutButton;
-
     private static JButton singlePlayerButton;
     private static JButton multiPlayerButton;
     private static JButton optionsButton;
@@ -60,24 +58,6 @@ public class MenuFrame extends JFrame {
         });
 
 
-        Icon logoutIcon = new ImageIcon("Documents/images/LogOutIcon.jpg");
-        logOutButton=new JButton(logoutIcon);
-        logOutButton.setLocation(1160,70);
-        logOutButton.setSize(89,30);
-        logOutButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                InfoPanel.getInstance().hidePanel();
-                String[] options = {"Log Out","Cancel"};
-                if(JOptionPane.showOptionDialog(null, "Are you sure you want to log out?",
-                        "Log Out",
-                        JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Documents/images/UserIcon.jpg"), options, options[0])==0) {
-                    hideFrame();
-                    SignUpFrame.showFrame();
-                }
-            }
-        });
-
 
         Icon singleIcon = new ImageIcon("Documents/images/SinglePlayerIcon.jpg");
         singlePlayerButton=new JButton(singleIcon);
@@ -101,7 +81,6 @@ public class MenuFrame extends JFrame {
 
         addItemsButton();
         add(InfoPanel.getInstance());
-        add(logOutButton);
         add(singlePlayerButton);
         add(multiPlayerButton);
         add(optionsButton);

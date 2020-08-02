@@ -17,12 +17,13 @@ public class InfoPanel extends JPanel {
     private JLabel userIcon;
     private static String userName="user1";
     private static String timePlayed="00:00";
+    private static JButton logOutButton;
     private int multiWins=2,multiLosses=4,singleWins=3,singleLosses=1;
     private static JLabel timeLabel;
 
     private InfoPanel() {
         setLayout(null);
-        setLocation(-230,0);
+        setLocation(-220,0);
         setBackground(Color.darkGray);
         addFields();
     }
@@ -126,22 +127,22 @@ public class InfoPanel extends JPanel {
         return Objects.requireNonNullElseGet(infoPanel, () -> infoPanel = new InfoPanel());
     }
     public void showPanel(){
-        MenuFrame.getInstance().removeItemsButton();
         if(!isShowing) {
-            Rectangle from = new Rectangle(-230, 0, 230, 707);
-            Rectangle to = new Rectangle(0, 3, 230, 707);
+            Rectangle from = new Rectangle(-220, 0, 220, 707);
+            Rectangle to = new Rectangle(0, 3, 220, 707);
 
             Animate animate = new Animate(this, from, to);
             animate.start();
             isShowing=true;
+            MenuFrame.getInstance().removeItemsButton();
 
         }
     }
     public void hidePanel(){
         if(isShowing) {
             MenuFrame.getInstance().addItemsButton();
-            Rectangle from = new Rectangle(0, 3, 230, 707);
-            Rectangle to = new Rectangle(-230, 0, 230, 707);
+            Rectangle from = new Rectangle(0, 3, 220, 707);
+            Rectangle to = new Rectangle(-220, 0, 220, 707);
 
             Animate animate = new Animate(this, from, to);
             animate.start();
@@ -174,35 +175,55 @@ public class InfoPanel extends JPanel {
         timeLabel=new JLabel("<html>Hours you have played:<br>&#160; &#160;&#160;&#160;&#160;"+timePlayed+"</html>");
         timeLabel.setFont(new Font("Comic Sans MS", 10, 22));
         timeLabel.setSize(200,160);
-        timeLabel.setLocation(15,110);
+        timeLabel.setLocation(25,110);
         timeLabel.setForeground(Color.white);
 
 
         JLabel singlePlayerLabel=new JLabel("Single player");
         singlePlayerLabel.setFont(new Font("Comic Sans MS", 10, 24));
         singlePlayerLabel.setSize(200,30);
-        singlePlayerLabel.setLocation(15,280);
+        singlePlayerLabel.setLocation(25,280);
         singlePlayerLabel.setForeground(Color.white);
 
         JLabel singleWinsAndLosses=new JLabel("<html>Wins: "+singleWins+"<br>Losses: "+singleLosses+"</html>");
         singleWinsAndLosses.setFont(new Font("Comic Sans MS", 10, 18));
         singleWinsAndLosses.setSize(200,60);
-        singleWinsAndLosses.setLocation(55,310);
+        singleWinsAndLosses.setLocation(65,310);
         singleWinsAndLosses.setForeground(Color.white);
 
 
         JLabel multiPlayerLabel=new JLabel("Multi player");
         multiPlayerLabel.setFont(new Font("Comic Sans MS", 10, 24));
         multiPlayerLabel.setSize(200,30);
-        multiPlayerLabel.setLocation(15,390);
+        multiPlayerLabel.setLocation(25,390);
         multiPlayerLabel.setForeground(Color.white);
 
 
         JLabel multiWinsAndLosses=new JLabel("<html>Wins: "+multiWins+"<br>Losses: "+multiLosses+"</html>");
         multiWinsAndLosses.setFont(new Font("Comic Sans MS", 10, 18));
         multiWinsAndLosses.setSize(200,60);
-        multiWinsAndLosses.setLocation(55,420);
+        multiWinsAndLosses.setLocation(65,420);
         multiWinsAndLosses.setForeground(Color.white);
+
+
+
+        logOutButton=new JButton("Log Out");
+        logOutButton.setFont(new Font("Comic Sans MS", 2, 16));
+        logOutButton.setLocation(60,660);
+        logOutButton.setSize(95,35);
+        logOutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                hidePanel();
+                String[] options = {"Log Out","Cancel"};
+                if(JOptionPane.showOptionDialog(null, "Are you sure you want to log out?",
+                        "Log Out",
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Documents/images/UserIcon.jpg"), options, options[0])==0) {
+                    MenuFrame.getInstance().hideFrame();
+                    SignUpFrame.showFrame();
+                }
+            }
+        });
 
 
 
@@ -214,6 +235,7 @@ public class InfoPanel extends JPanel {
         add(singleWinsAndLosses);
         add(multiPlayerLabel);
         add(multiWinsAndLosses);
+        add(logOutButton);
 
     }
 
