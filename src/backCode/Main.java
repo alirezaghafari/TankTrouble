@@ -18,7 +18,6 @@ public class Main {
 
 
         // Show the game menu ...
-        MenuFrame fr=MenuFrame.getInstance();
         SignUpFrame.getInstance();
 
 

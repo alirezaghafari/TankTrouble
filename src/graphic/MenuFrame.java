@@ -12,10 +12,10 @@ import java.awt.event.WindowEvent;
 public class MenuFrame extends JFrame {
     private String userName="user1";
     private static MenuFrame menuFrame;
-    private JButton logOutButton;
-    private JButton singlePlayerButton;
-    private JButton multiPlayerButton;
-    private JButton optionsButton;
+    private static JButton logOutButton;
+    private static JButton singlePlayerButton;
+    private static JButton multiPlayerButton;
+    private static JButton optionsButton;
     private MenuFrame(){
         super("TANK TROUBLE");
         setSize(1275,735);
@@ -42,6 +42,13 @@ public class MenuFrame extends JFrame {
         logOutButton=new JButton(logoutIcon);
         logOutButton.setLocation(1160,70);
         logOutButton.setSize(89,30);
+        logOutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                hideFrame();
+                SignUpFrame.showFrame();
+            }
+        });
 
         JLabel userNameLabel=new JLabel(userName);
         userNameLabel.setSize(200,30);
@@ -84,6 +91,16 @@ public class MenuFrame extends JFrame {
             return menuFrame;
     }
 
-
+    public static void showFrame(){
+        MenuFrame menuFrame=MenuFrame.getInstance();
+        MenuFrame.getInstance().setLocationRelativeTo(null);
+        menuFrame.setVisible(true);
+        menuFrame.revalidate();
+        menuFrame.repaint();
+    }
+    public static void hideFrame(){
+        MenuFrame menuFrame=MenuFrame.getInstance();
+        menuFrame.setVisible(false);
+    }
 }
 

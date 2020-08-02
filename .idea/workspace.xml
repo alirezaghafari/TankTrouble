@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f333d852-8d30-410c-87b3-6a8006cafc40" name="Default Changelist" comment="" />
+    <list default="true" id="f333d852-8d30-410c-87b3-6a8006cafc40" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/backCode/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/backCode/Main$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/backCode/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/backCode/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/graphic/SignInFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/graphic/SignInFrame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/graphic/SignInFrame$HintTextField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/graphic/SignInFrame$HintTextField.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/graphic/SignInFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/graphic/SignInFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/graphic/SignUpFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/graphic/SignUpFrame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/graphic/SignUpFrame$HintTextField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/graphic/SignUpFrame$HintTextField.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/graphic/SignUpFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/graphic/SignUpFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backCode/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/backCode/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/MenuFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/MenuFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/SignInFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/SignInFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/SignUpFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/SignUpFrame.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

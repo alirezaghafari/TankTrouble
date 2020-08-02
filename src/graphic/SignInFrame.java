@@ -9,10 +9,10 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 public class SignInFrame extends JFrame {
-    private JTextField userNameField;
-    private JTextField passwordField;
-    private JButton signUpButton;
-    private JButton signInButton;
+    private static JTextField userNameField;
+    private static JTextField passwordField;
+    private static JButton signUpButton;
+    private static JButton signInButton;
     private static SignInFrame signInFrame;
     private SignInFrame(){
         super("Login");
@@ -49,6 +49,15 @@ public class SignInFrame extends JFrame {
         signInButton.setLocation(363,300);
         signInButton.setSize(90,20);
         signInButton.setForeground(Color.darkGray);
+        signInButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(true){
+                    hideFrame();
+                    MenuFrame.showFrame();
+                }
+            }
+        });
 
 
         Icon signUpIcon = new ImageIcon("Documents/images/signUpBackground.jpg");
@@ -59,10 +68,8 @@ public class SignInFrame extends JFrame {
         signUpButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SignInFrame.this.setVisible(false);
-                SignUpFrame.getInstance().setVisible(true);
-                userNameField.setText("  USERNAME:");
-                passwordField.setText("  PASSWORD:");
+                hideFrame();
+                SignUpFrame.showFrame();
             }
         });
 
@@ -116,5 +123,20 @@ public class SignInFrame extends JFrame {
             return signInFrame=new SignInFrame();
         else
             return signInFrame;
+    }
+
+
+    public static void showFrame(){
+        SignInFrame signInFrame=SignInFrame.getInstance();
+        SignUpFrame.getInstance().setLocationRelativeTo(null);
+        userNameField.setText("  USERNAME:");
+        passwordField.setText("  PASSWORD:");
+        signInFrame.setVisible(true);
+        signInFrame.revalidate();
+        signInFrame.repaint();
+    }
+    public static void hideFrame(){
+        SignInFrame signInFrame=SignInFrame.getInstance();
+        signInFrame.setVisible(false);
     }
 }

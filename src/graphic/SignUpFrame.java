@@ -9,11 +9,11 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 public class SignUpFrame extends JFrame {
-    private JTextField userNameField;
-    private JTextField passwordField;
-    private JCheckBox checkBox;
-    private JButton signUpButton;
-    private JButton signInButton;
+    private static JTextField userNameField;
+    private static JTextField passwordField;
+    private static JCheckBox checkBox;
+    private static JButton signUpButton;
+    private static JButton signInButton;
     private static SignUpFrame signUpFrame;
     private SignUpFrame(){
         super("Login");
@@ -59,6 +59,15 @@ public class SignUpFrame extends JFrame {
         signUpButton.setLocation(363,300);
         signUpButton.setSize(90,20);
         signUpButton.setForeground(Color.darkGray);
+        signUpButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(true){
+                    hideFrame();
+                    MenuFrame.showFrame();
+                }
+            }
+        });
 
 
         Icon signIn = new ImageIcon("Documents/images/signInBackground.jpg");
@@ -69,11 +78,8 @@ public class SignUpFrame extends JFrame {
         signInButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SignUpFrame.this.setVisible(false);
-                SignInFrame.getInstance().setVisible(true);
-                userNameField.setText("  USERNAME:");
-                passwordField.setText("  PASSWORD:");
-                checkBox.setSelected(false);
+                hideFrame();
+                SignInFrame.showFrame();
             }
         });
 
@@ -128,5 +134,20 @@ public class SignUpFrame extends JFrame {
             return signUpFrame=new SignUpFrame();
         else
             return signUpFrame;
+    }
+
+    public static void showFrame(){
+        SignUpFrame signUpFrame=SignUpFrame.getInstance();
+        SignUpFrame.getInstance().setLocationRelativeTo(null);
+        userNameField.setText("  USERNAME:");
+        passwordField.setText("  PASSWORD:");
+        checkBox.setSelected(false);
+        signUpFrame.setVisible(true);
+        signUpFrame.revalidate();
+        signUpFrame.repaint();
+    }
+    public static void hideFrame(){
+        SignUpFrame signUpFrame=SignUpFrame.getInstance();
+        signUpFrame.setVisible(false);
     }
 }
