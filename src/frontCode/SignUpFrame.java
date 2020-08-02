@@ -1,12 +1,12 @@
-package graphic;
+package frontCode;
 
 import javax.swing.*;
 import java.awt.*;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class SignUpFrame extends JFrame {
     private static JTextField userNameField;
@@ -14,7 +14,10 @@ public class SignUpFrame extends JFrame {
     private static JCheckBox checkBox;
     private static JButton signUpButton;
     private static JButton signInButton;
+
+    //this is to implement singleton design pattern
     private static SignUpFrame signUpFrame;
+
     private SignUpFrame(){
         super("Login");
         setSize(600,360);
@@ -49,23 +52,30 @@ public class SignUpFrame extends JFrame {
         checkBox.setSize(22,22);
         checkBox.setLocation(175,290);
 
-        JLabel label=new JLabel("Remember me");
-        label.setForeground(Color.white);
-        label.setLocation(200,280);
-        label.setSize(100,40);
+        JLabel rememberMe=new JLabel("Remember me");
+        rememberMe.setForeground(Color.white);
+        rememberMe.setLocation(200,280);
+        rememberMe.setSize(100,40);
+        rememberMe.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (checkBox.isSelected())
+                    checkBox.setSelected(false);
+                else
+                    checkBox.setSelected(true);
+
+            }
+        });
 
 
         signUpButton=new JButton("Sign up");
         signUpButton.setLocation(363,300);
         signUpButton.setSize(90,20);
         signUpButton.setForeground(Color.darkGray);
-        signUpButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(true){
-                    hideFrame();
-                    MenuFrame.showFrame();
-                }
+        signUpButton.addActionListener(e -> {
+            if(true){
+                hideFrame();
+                MenuFrame.showFrame();
             }
         });
 
@@ -75,12 +85,9 @@ public class SignUpFrame extends JFrame {
         signInButton.setLocation(20,20);
         signInButton.setSize(70,21);
         signInButton.setForeground(Color.white);
-        signInButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                hideFrame();
-                SignInFrame.showFrame();
-            }
+        signInButton.addActionListener(e -> {
+            hideFrame();
+            SignInFrame.showFrame();
         });
 
         add(signInButton);
@@ -88,7 +95,7 @@ public class SignUpFrame extends JFrame {
         add(passwordField);
         add(signUpButton);
         add(checkBox);
-        add(label);
+        add(rememberMe);
 
     }
 

@@ -1,4 +1,4 @@
-package graphic;
+package frontCode;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +13,10 @@ public class SignInFrame extends JFrame {
     private static JTextField passwordField;
     private static JButton signUpButton;
     private static JButton signInButton;
+
+    //this is to implement singleton design pattern
     private static SignInFrame signInFrame;
+
     private SignInFrame(){
         super("Login");
         setSize(600,360);
