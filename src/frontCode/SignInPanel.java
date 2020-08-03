@@ -4,38 +4,34 @@ package frontCode;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Hashtable;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.util.Objects;
-
-
 import javax.swing.*;
 
-
-public class OptionsPanel extends JPanel {
+public class SignInPanel extends JPanel {
 
     //this is to implement singleton design pattern
-    private static OptionsPanel optionsPanel;
+    private static SignInPanel signInPanel;
+
+    private static JTextField userNameField;
+    private static JTextField passwordField;
+    private static JButton signUpButton;
+    private static JButton signInButton;
+
+
     private static boolean isShowing;
 
 
-    private static JButton goBackIcon;
-    private static JLabel tankStamina;
-    private static JLabel fireRate;
-    private static JLabel wallStamina;
-    private static JSlider tankStaminaSlider;
-    private static JSlider fireRateSlider;
-    private static JSlider wallStaminaSlider;
-
+    private SignInPanel() {
+        setLayout(null);
+        setLocation(0,-347);
+        addFields();
+    }
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); // paint the background image and scale it to fill the entire space
-        g.drawImage(new ImageIcon("Documents/images/OptionsPanelBackground.jpg").getImage(),0,0,null);
-    }
-
-    private OptionsPanel() {
-        setLayout(null);
-        setLocation(1275,0);
-        addFields();
+        g.drawImage(new ImageIcon("Documents/images/LoginBackground2.jpg").getImage(),0,0,null);
     }
 
     public static class Animate {
@@ -78,79 +74,63 @@ public class OptionsPanel extends JPanel {
     }
 
     private static Rectangle calculateProgress(Rectangle startBounds, Rectangle targetBounds, double progress) {
-
         Rectangle bounds = new Rectangle();
-
         if (startBounds != null && targetBounds != null) {
-
             bounds.setLocation(calculateProgress(startBounds.getLocation(), targetBounds.getLocation(), progress));
             bounds.setSize(calculateProgress(startBounds.getSize(), targetBounds.getSize(), progress));
-
         }
-
         return bounds;
-
     }
 
     public static Point calculateProgress(Point startPoint, Point targetPoint, double progress) {
-
         Point point = new Point();
-
         if (startPoint != null && targetPoint != null) {
-
             point.x = calculateProgress(startPoint.x, targetPoint.x, progress);
             point.y = calculateProgress(startPoint.y, targetPoint.y, progress);
-
         }
-
         return point;
-
     }
 
     public static int calculateProgress(int startValue, int endValue, double fraction) {
-
         int value = 0;
         int distance = endValue - startValue;
         value = (int)Math.round((double)distance * fraction);
         value += startValue;
-
         return value;
-
     }
 
     public static Dimension calculateProgress(Dimension startSize, Dimension targetSize, double progress) {
-
         Dimension size = new Dimension();
-
         if (startSize != null && targetSize != null) {
-
             size.width = calculateProgress(startSize.width, targetSize.width, progress);
             size.height = calculateProgress(startSize.height, targetSize.height, progress);
-
         }
-
         return size;
-
     }
 
-    public static OptionsPanel getInstance(){
-        return Objects.requireNonNullElseGet(optionsPanel, () -> optionsPanel = new OptionsPanel());
+    public static SignInPanel getInstance(){
+        return Objects.requireNonNullElseGet(signInPanel, () -> signInPanel = new SignInPanel());
     }
     public void showPanel(){
         if(!isShowing) {
-            Rectangle from = new Rectangle(1275, 3, 260, 707);
-            Rectangle to = new Rectangle(1015, 3, 260, 707);
-
+            userNameField.setText("  USERNAME:");
+            passwordField.setText("  PASSWORD:");
+            signInPanel.revalidate();
+            signInPanel.repaint();
+            Rectangle from = new Rectangle(20, -347, 560, 347);
+            Rectangle to = new Rectangle(20, -10, 560, 347);
             Animate animate = new Animate(this, from, to);
             animate.start();
             isShowing=true;
 
+            SignUpFrame.getInstance().removeItems();
         }
     }
     public void hidePanel(){
         if(isShowing) {
-            Rectangle from = new Rectangle(1015, 3, 260, 707);
-            Rectangle to = new Rectangle(1275, 3, 260, 707);
+            SignUpFrame.getInstance().addItems();
+            Rectangle from = new Rectangle(20, -10, 560, 347);
+            Rectangle to = new Rectangle(20,-347 , 560, 347);
 
             Animate animate = new Animate(this, from, to);
             animate.start();
@@ -160,77 +140,84 @@ public class OptionsPanel extends JPanel {
         }
     }
     public void addFields(){
+        userNameField=new SignInPanel.HintTextField("  USERNAME:");
+        userNameField.setLocation(153,200);
+        userNameField.setSize(250,40);
+        userNameField.setBackground(Color.gray);
+        userNameField.setForeground(Color.white);
 
-        goBackIcon=new JButton(new ImageIcon("Documents/images/GoBackIconReverse.jpg"));
-        goBackIcon.setLocation(200,35);
-        goBackIcon.setSize(28,28);
-        goBackIcon.addActionListener(new ActionListener() {
+        passwordField=new SignInPanel.HintTextField("  PASSWORD:");
+        passwordField.setSize(250,40);
+        passwordField.setLocation(153,250);
+        passwordField.setBackground(Color.gray);
+        passwordField.setForeground(Color.white);
+
+        signInButton=new JButton("Sign in");
+        signInButton.setLocation(341,305);
+        signInButton.setSize(90,25);
+        signInButton.setForeground(Color.darkGray);
+        signInButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(true){
+                    hidePanel();
+                    MenuFrame.showFrame();
+                }
+            }
+        });
+
+
+        Icon signUpIcon = new ImageIcon("Documents/images/signUpBackground.jpg");
+        signUpButton=new JButton(signUpIcon);
+        signUpButton.setLocation(10,33);
+        signUpButton.setSize(70,25);
+        signUpButton.setForeground(Color.white);
+        signUpButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 hidePanel();
             }
         });
-        JLabel optionsLabel=new JLabel("OPTIONS");
-        optionsLabel.setSize(200,30);
-        optionsLabel.setLocation(20,60);
-        optionsLabel.setFont(new Font("Comic Sans MS", 3, 30));
-        optionsLabel.setForeground(Color.white);
 
-
-        tankStamina=new JLabel("Tank stamina");
-        tankStamina.setSize(200,30);
-        tankStamina.setLocation(20,170);
-        tankStamina.setFont(new Font("Comic Sans MS", 10, 24));
-        tankStamina.setForeground(Color.white);
-
-
-        fireRate=new JLabel("Fire rate");
-        fireRate.setSize(200,30);
-        fireRate.setLocation(20,300);
-        fireRate.setFont(new Font("Comic Sans MS", 10, 24));
-        fireRate.setForeground(Color.white);
-
-
-        wallStamina=new JLabel("Wall stamina");
-        wallStamina.setSize(200,30);
-        wallStamina.setLocation(20,450);
-        wallStamina.setFont(new Font("Comic Sans MS", 10, 24));
-        wallStamina.setForeground(Color.white);
-
-        tankStaminaSlider=new JSlider(40,100,70);
-        fireRateSlider=new JSlider(40,100,70);
-        wallStaminaSlider=new JSlider(40,100,70);
-
-        add(optionsLabel);
-        addSliders(tankStaminaSlider,30,200);
-        addSliders(fireRateSlider,30,330);
-        addSliders(wallStaminaSlider,30,470);
-        add(goBackIcon);
-        add(tankStamina);
-        add(fireRate);
-        add(wallStamina);
+        add(signInButton);
+        add(userNameField);
+        add(passwordField);
+        add(signUpButton);
     }
 
-    public void addSliders(JSlider slider,int x,int y){
-        slider.setLocation(x,y);
-        slider.setSize(200,70);
-        slider.setForeground(Color.white);
+    /**
+     * an inner class to put hint on text fields
+     */
+    class HintTextField extends JTextField implements FocusListener {
 
-        Hashtable<Integer, JLabel> labels = new Hashtable<>();
-        JLabel lowLabel=new JLabel("Low");
-        lowLabel.setForeground(Color.white);
-        labels.put(40, lowLabel);
-        JLabel highLabel=new JLabel("High");
-        highLabel.setForeground(Color.white);
-        labels.put(100, highLabel);
-        slider.setLabelTable(labels);
-        slider.setPaintLabels(true);
+        private final String hint;
+        private boolean showingHint;
 
+        public HintTextField( String hint) {
+            super.setText(hint);
+            this.hint = hint;
+            this.showingHint = true;
+            super.addFocusListener(this);
+        }
 
-        add(slider);
-    }
+        @Override
+        public void focusGained(FocusEvent e) {
+            if(this.getText().isEmpty()||this.getText().equals("  PASSWORD:")||this.getText().equals("  USERNAME:")) {
+                super.setText("");
+                showingHint = false;
+            }
+        }
+        @Override
+        public void focusLost(FocusEvent e) {
+            if(this.getText().isEmpty()) {
+                super.setText(hint);
+                showingHint = true;
+            }
+        }
 
-    public boolean isOpen(){
-        return isShowing;
+        @Override
+        public String getText() {
+            return showingHint ? "" : super.getText();
+        }
     }
 }

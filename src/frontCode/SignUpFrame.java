@@ -14,13 +14,14 @@ public class SignUpFrame extends JFrame {
     private static JCheckBox checkBox;
     private static JButton signUpButton;
     private static JButton signInButton;
+    private static JLabel rememberMe;
 
     //this is to implement singleton design pattern
     private static SignUpFrame signUpFrame;
 
     private SignUpFrame(){
         super("Login");
-        setSize(600,360);
+        setSize(600,370);
         setResizable(false);
         setBackground();
         addFields();
@@ -52,7 +53,7 @@ public class SignUpFrame extends JFrame {
         checkBox.setSize(22,22);
         checkBox.setLocation(175,290);
 
-        JLabel rememberMe=new JLabel("Remember me");
+        rememberMe=new JLabel("Remember me");
         rememberMe.setForeground(Color.white);
         rememberMe.setLocation(200,280);
         rememberMe.setSize(100,40);
@@ -70,7 +71,7 @@ public class SignUpFrame extends JFrame {
 
         signUpButton=new JButton("Sign up");
         signUpButton.setLocation(363,300);
-        signUpButton.setSize(90,20);
+        signUpButton.setSize(90,25);
         signUpButton.setForeground(Color.darkGray);
         signUpButton.addActionListener(e -> {
             if(true){
@@ -83,19 +84,15 @@ public class SignUpFrame extends JFrame {
         Icon signIn = new ImageIcon("Documents/images/signInBackground.jpg");
         signInButton=new JButton(signIn);
         signInButton.setLocation(20,20);
-        signInButton.setSize(70,21);
+        signInButton.setSize(70,25);
         signInButton.setForeground(Color.white);
         signInButton.addActionListener(e -> {
-            hideFrame();
-            SignInFrame.showFrame();
+            SignInPanel.getInstance().showPanel();
         });
 
-        add(signInButton);
-        add(userNameField);
-        add(passwordField);
-        add(signUpButton);
-        add(checkBox);
-        add(rememberMe);
+
+        addItems();
+        add(SignInPanel.getInstance());
 
     }
 
@@ -156,5 +153,27 @@ public class SignUpFrame extends JFrame {
     public static void hideFrame(){
         SignUpFrame signUpFrame=SignUpFrame.getInstance();
         signUpFrame.setVisible(false);
+    }
+    public void removeItems(){
+        remove(userNameField);
+        remove(passwordField);
+        remove(checkBox);
+        remove(rememberMe);
+        remove(signUpButton);
+        remove(signInButton);
+    }
+    public void addItems(){
+        add(signInButton);
+        add(userNameField);
+        add(passwordField);
+        add(signUpButton);
+        add(checkBox);
+        add(rememberMe);
+        userNameField.setText("  USERNAME:");
+        passwordField.setText("  PASSWORD:");
+        checkBox.setSelected(false);
+        revalidate();
+        repaint();
+
     }
 }

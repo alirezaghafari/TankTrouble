@@ -11,6 +11,8 @@ public class InfoPanel extends JPanel {
 
     //this is to implement singleton design pattern
     private static InfoPanel infoPanel;
+
+
     private static boolean isShowing;
     private JButton goBackIcon;
     private JLabel userNameLabel;
