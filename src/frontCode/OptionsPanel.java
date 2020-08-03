@@ -4,21 +4,38 @@ package frontCode;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Hashtable;
 import java.util.Objects;
 
+
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class OptionsPanel extends JPanel {
 
     //this is to implement singleton design pattern
     private static OptionsPanel optionsPanel;
     private static boolean isShowing;
+
+
     private static JButton goBackIcon;
+    private static JLabel tankStamina;
+    private static JLabel fireRate;
+    private static JLabel wallStamina;
+    private static JSlider tankStaminaSlider;
+    private static JSlider fireRateSlider;
+    private static JSlider wallStaminaSlider;
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g); // paint the background image and scale it to fill the entire space
+        g.drawImage(new ImageIcon("Documents/images/OptionsPanelBackground.jpg").getImage(),0,0,null);
+    }
 
     private OptionsPanel() {
         setLayout(null);
         setLocation(1275,0);
-        setBackground(Color.darkGray);
         addFields();
     }
 
@@ -144,6 +161,7 @@ public class OptionsPanel extends JPanel {
         }
     }
     public void addFields(){
+
         goBackIcon=new JButton(new ImageIcon("Documents/images/GoBackIconReverse.jpg"));
         goBackIcon.setLocation(200,35);
         goBackIcon.setSize(28,28);
@@ -153,12 +171,64 @@ public class OptionsPanel extends JPanel {
                 hidePanel();
             }
         });
+        JLabel optionsLabel=new JLabel("OPTIONS");
+        optionsLabel.setSize(200,30);
+        optionsLabel.setLocation(20,60);
+        optionsLabel.setFont(new Font("Comic Sans MS", 3, 30));
+        optionsLabel.setForeground(Color.white);
 
 
+        tankStamina=new JLabel("Tank stamina");
+        tankStamina.setSize(200,30);
+        tankStamina.setLocation(20,170);
+        tankStamina.setFont(new Font("Comic Sans MS", 10, 24));
+        tankStamina.setForeground(Color.white);
 
 
+        fireRate=new JLabel("Fire rate");
+        fireRate.setSize(200,30);
+        fireRate.setLocation(20,300);
+        fireRate.setFont(new Font("Comic Sans MS", 10, 24));
+        fireRate.setForeground(Color.white);
 
+
+        wallStamina=new JLabel("Wall stamina");
+        wallStamina.setSize(200,30);
+        wallStamina.setLocation(20,450);
+        wallStamina.setFont(new Font("Comic Sans MS", 10, 24));
+        wallStamina.setForeground(Color.white);
+
+        tankStaminaSlider=new JSlider(40,100,70);
+        fireRateSlider=new JSlider(40,100,70);
+        wallStaminaSlider=new JSlider(40,100,70);
+
+        add(optionsLabel);
+        addSliders(tankStaminaSlider,30,200);
+        addSliders(fireRateSlider,30,330);
+        addSliders(wallStaminaSlider,30,470);
         add(goBackIcon);
+        add(tankStamina);
+        add(fireRate);
+        add(wallStamina);
+    }
+
+    public void addSliders(JSlider slider,int x,int y){
+        slider.setLocation(x,y);
+        slider.setSize(200,70);
+        slider.setForeground(Color.white);
+
+        Hashtable<Integer, JLabel> labels = new Hashtable<>();
+        JLabel lowLabel=new JLabel("Low");
+        lowLabel.setForeground(Color.white);
+        labels.put(40, lowLabel);
+        JLabel highLabel=new JLabel("High");
+        highLabel.setForeground(Color.white);
+        labels.put(100, highLabel);
+        slider.setLabelTable(labels);
+        slider.setPaintLabels(true);
+
+
+        add(slider);
     }
 
     public boolean isOpen(){

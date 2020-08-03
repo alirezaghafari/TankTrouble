@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f333d852-8d30-410c-87b3-6a8006cafc40" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/frontCode/OptionsPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/MenuFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/frontCode/MenuFrame$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/MenuFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/frontCode/MenuFrame$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/MenuFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/frontCode/MenuFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/frontCode/InfoPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontCode/InfoPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/frontCode/MenuFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontCode/MenuFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontCode/OptionsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontCode/OptionsPanel.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -93,7 +87,7 @@
       <updated>1596140594349</updated>
       <workItem from="1596140597614" duration="1259000" />
       <workItem from="1596145972938" duration="26204000" />
-      <workItem from="1596392584258" duration="17218000" />
+      <workItem from="1596392584258" duration="22812000" />
     </task>
     <servers />
   </component>
