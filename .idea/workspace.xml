@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f333d852-8d30-410c-87b3-6a8006cafc40" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/frontCode/OptionsPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documents/images/LogOutIcon.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel$Animate$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel$Animate$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel$Animate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel$Animate.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/MenuFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/frontCode/MenuFrame$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/MenuFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/frontCode/MenuFrame$2.class" afterDir="false" />
@@ -96,7 +93,7 @@
       <updated>1596140594349</updated>
       <workItem from="1596140597614" duration="1259000" />
       <workItem from="1596145972938" duration="26204000" />
-      <workItem from="1596392584258" duration="8933000" />
+      <workItem from="1596392584258" duration="17218000" />
     </task>
     <servers />
   </component>

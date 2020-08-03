@@ -128,7 +128,7 @@ public class InfoPanel extends JPanel {
     }
     public void showPanel(){
         if(!isShowing) {
-            Rectangle from = new Rectangle(-220, 0, 220, 707);
+            Rectangle from = new Rectangle(-220, 3, 220, 707);
             Rectangle to = new Rectangle(0, 3, 220, 707);
 
             Animate animate = new Animate(this, from, to);
@@ -142,7 +142,7 @@ public class InfoPanel extends JPanel {
         if(isShowing) {
             MenuFrame.getInstance().addItemsButton();
             Rectangle from = new Rectangle(0, 3, 220, 707);
-            Rectangle to = new Rectangle(-220, 0, 220, 707);
+            Rectangle to = new Rectangle(-220, 3, 220, 707);
 
             Animate animate = new Animate(this, from, to);
             animate.start();
@@ -245,5 +245,9 @@ public class InfoPanel extends JPanel {
 
     public static void setTimePlayed(String timePlayed) {
         InfoPanel.timePlayed = timePlayed;
+    }
+
+    public boolean isOpen() {
+        return isShowing;
     }
 }

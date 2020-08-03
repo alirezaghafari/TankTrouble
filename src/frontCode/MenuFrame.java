@@ -3,6 +3,10 @@ package frontCode;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * The frame which contains start buttons and options
@@ -26,17 +30,23 @@ public class MenuFrame extends JFrame {
         setLocationRelativeTo(null); // put frame at center of screen
         setVisible(true);
 
-        this.addMouseWheelListener(new MouseWheelListener() {
-
+        addMouseWheelListener(new MouseWheelListener() {
             @Override
             public void mouseWheelMoved(MouseWheelEvent event) {
                 if (event.isShiftDown()) {
                     if(event.getWheelRotation()>0)
                         InfoPanel.getInstance().hidePanel();
-                    else if(event.getWheelRotation()<0)
+                    else if(event.getWheelRotation()<0) {
                         InfoPanel.getInstance().showPanel();
-
+                    }
                 }
+            }
+        });
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                if(e.getX()<1015)
+                    OptionsPanel.getInstance().hidePanel();
             }
         });
 
@@ -76,11 +86,22 @@ public class MenuFrame extends JFrame {
         optionsButton=new JButton(optionsIcon);
         optionsButton.setLocation(800,600);
         optionsButton.setSize(200,80);
+        optionsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                InfoPanel.getInstance().hidePanel();
+                if(OptionsPanel.getInstance().isOpen())
+                    OptionsPanel.getInstance().hidePanel();
+                else
+                    OptionsPanel.getInstance().showPanel();
+            }
+        });
 
 
 
         addItemsButton();
         add(InfoPanel.getInstance());
+        add(OptionsPanel.getInstance());
         add(singlePlayerButton);
         add(multiPlayerButton);
         add(optionsButton);
