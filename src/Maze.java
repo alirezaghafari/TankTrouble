@@ -17,13 +17,12 @@ public class Maze {
 		new Maze(30);
 		//no argument constructor automatically sets the density to the default value of 30
 	}
-
 	public Maze(int density) {
 		walls = generateMaze(density);
 		//create a randomly filled grid of walls, where the higher the density, the more walls there will be
 		Square[][] areas = this.mergeAll();
 		//find all the areas which are separate from one another
-		while (areas.length > 1) {
+		while (areas.length>1){
 			removeWall(areas[0]);
 			//remove a wall between two adjacent separate areas
 			areas = this.mergeAll();
@@ -228,4 +227,181 @@ public class Maze {
 		//remove nulls}
 	}
 
+	private Square[][] connections() {
+		//returns a list of what other squares each square in the maze is connected to
+		Square[][] connections = new Square[49][5];
+		for (int i = 0; i < 7; i++) {
+			for (int j = 0; j < 7; j++) { //for each square...
+				connections[i + 7 * j] = neighbours(new Square(i, j));//find its neighbours
+			}
+		}
+		return connections;
+	}
+
+	private Square[][] mergeAll() {
+		//returns a list of all separate areas in the maze
+		Square[][] set = connections();
+		//find the squares each square is connected to
+		//convert the array into a list{
+		ArrayList<Square[]> list = new ArrayList<Square[]>(49);
+		for (int i = 0; i < 49; i++) {
+			list.add(set[i]);
+		}
+		//convert the array into a list}
+		//merge all the areas with squares in common{
+		for (int i = 0; i<list.size()-1;i++){
+			for (int j = (i+1); j<list.size();j++){
+				if (intersection(list.get(i), list.get(j)).length != 0) {
+					//if the two connections have any squares in common...
+					list.set(i, merge(list.get(i), list.get(j)));
+					//store that both connections are one
+					list.remove(j);
+					i=0;
+					j=0;
+				}//do this for 1;2, 1;3; 1;4, 1;5, 1;6... 2;3, 2;4, 2;5, ... n-1;n , resetting each time a merge is successful
+			}
+		}
+		//merge all the areas with squares in common}
+		//convert back to an array{
+		Square[][] returnValue = new Square[list.size()][49];
+		for (int i = 0; i < list.size(); i++) {
+			returnValue[i]=list.get(i);
+		}
+		//convert back to an array}
+		return returnValue;
+	}
+	//TODO: continue adding comments from here onwards
+	private static Square[] merge(Square[] a, Square[] b) {
+		Square[] returnValue = new Square[b.length + a.length];
+		for (int i = 0; i < a.length; i++) {
+			if (!(a[i] == null)) {
+				returnValue[i] = a[i];
+			}
+		}// return every value in a that isn't null
+		for (int i = 0; i < b.length; i++) {// check every value in b
+			boolean found = false;
+			for (int j = 0; j < a.length; j++) {
+				if (!(a[j] == null) && !(b[i] == null) && b[i].equals(a[j])) {
+					found = true;
+				}
+			}// check whether that value is already in a
+			if (!found && !(b[i] == null)) {// if not, return it too
+				for (int j = 0; j < returnValue.length; j++) {
+					if (returnValue[j] == null) {
+						returnValue[j] = b[i];
+						break;
+					}
+				}
+			}
+		}
+		// remove nulls
+		int realLength = 0;
+		boolean found = false;
+		for (int i = 0; i < returnValue.length; i++) {
+			if (returnValue[i] == null) {
+				realLength = i;
+				found = true;
+				break;
+			}
+		}
+		if (found) {
+			Square[] cutReturnValue = new Square[realLength];
+			for (int i = 0; i < realLength; i++) {
+				cutReturnValue[i] = returnValue[i];
+			}
+			return cutReturnValue;
+		} else {
+			return returnValue;
+		}
+	}
+
+	private static Square[] intersection(Square[] a, Square[] b) {
+		Square[] returnValue = new Square[b.length];
+		for (int i = 0; i < b.length; i++) {// check every value in b
+			boolean found = false;
+			for (int j = 0; j < a.length; j++) {
+				if (!(a[j] == null) && !(b[i] == null) && b[i].equals(a[j])) {
+					found = true;
+				}
+			}// check whether that value is also in a
+			if (found && !(b[i] == null)) {// if so, return it too
+				for (int j = 0; j < returnValue.length; j++) {
+					if (returnValue[j] == null) {
+						returnValue[j] = b[i];
+						break;
+					}
+				}
+			}
+		}
+		// remove nulls
+		int realLength = 0;
+		boolean found = false;
+		for (int i = 0; i < returnValue.length; i++) {
+			if (returnValue[i] == null) {
+				realLength = i;
+				found = true;
+				break;
+			}
+		}
+		if (found) {
+			Square[] cutReturnValue = new Square[realLength];
+			for (int i = 0; i < realLength; i++) {
+				cutReturnValue[i] = returnValue[i];
+			}
+			return cutReturnValue;
+		} else {
+			return returnValue;
+		}
+	}
+
+	private boolean[][][] generateMaze(int density) {
+		boolean[][][] walls = generateEmptyMaze();
+		for (int j = 0; j < 2; j++) {
+			for (int i = 0; i < density; i++) {
+				int randomNumber = (int) (Math.random() * (7));
+				int randomNumber2 = (int) (Math.random() * (7));
+				walls[j][randomNumber][randomNumber2] = true;
+			}
+		}
+		return walls;
+	}
+
+	private boolean[][][] generateEmptyMaze() {
+		boolean[][][] walls = new boolean[2][gridWidth + 1][gridWidth + 1];
+		for (int i = 0; i < 7; i++) {
+			walls[0][0][i] = true;
+			walls[0][7][i] = true;
+			walls[1][0][i] = true;
+			walls[1][7][i] = true;
+		}
+		return walls;
+	}
+
+	public String toString() {
+		String[] lines = new String[8];
+		lines[0] = " ";
+		for (int i = 0; i < 7; i++) {
+			lines[0] = lines[0] + (walls[0][0][i] ? "_" : " ") + " ";
+		}
+		for (int i = 1; i < 8; i++) {
+			lines[i] = "";
+			for (int j = 0; j < 8; j++) {
+				lines[i] = lines[i] + (walls[1][j][i - 1] ? "|" : " ")
+						+ (walls[0][i][j] ? "_" : " ");
+			}
+		}
+		String toReturn = "";
+		for (int i = 0; i < 8; i++) {
+			toReturn = toReturn + lines[i] + "\n";
+		}
+		return toReturn;
+	}
+
+	public static void main(String[] args) {
+		Maze maze = new Maze(40);
+		System.out.print(maze);
+	}
 }
+
+
+
