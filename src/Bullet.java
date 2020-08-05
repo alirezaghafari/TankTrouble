@@ -1,6 +1,4 @@
-package project;
-
-public class Bullet {
+public class Bullet{
 
 	private int timer;
 	private int owner;
@@ -15,17 +13,24 @@ public class Bullet {
 		this.angle = angle;
 		this.position = position;
 		this.timer = 1000; //set the time duration of the bullet's presence to 100 frames
-		this.engine = e;
+		this.engine=e;
 	}
 
 	public Point getPosition() {
 		return position;
 	}
-
-	public int getAngle() {
+	public int getAngle(){
 		return angle;
 	}
 
+	public void removeBullet(){
+		if (this.owner==0){
+			engine.player1.decreaseNumberOfBulletsFired();
+		}else{
+			engine.player2.decreaseNumberOfBulletsFired();
+		}
+		GameEngine.bulletList.remove(this);
+	}
 }
 
 
