@@ -1,4 +1,4 @@
-package project;
+package tankGame;
 import java.util.ArrayList;
 
 public class Maze {
@@ -12,7 +12,7 @@ public class Maze {
 	//right wall = [1][a+1][b]
 	//top wall = [0][b][a]
 	//bottom wall = [0][b+1][a]
-
+	
 	public Maze() {
 		new Maze(30);
 		//no argument constructor automatically sets the density to the default value of 30
@@ -26,7 +26,7 @@ public class Maze {
 			removeWall(areas[0]);
 			//remove a wall between two adjacent separate areas
 			areas = this.mergeAll();
-			//find the seperate areas again
+			//find the separate areas again
 		}
 	}
 
@@ -61,29 +61,29 @@ public class Maze {
 		Square[] neighbours = new Square[5];
 		int numberOfNeighbours = 0;
 		//find all neighbours{
-		if (!isWallLeft(square.getxCoord(), square.getyCoord())) {
-			neighbours[numberOfNeighbours] = new Square(square.getxCoord() - 1,
-					square.getyCoord());
+		if (!isWallLeft(square.getXCoordinate(), square.getYCoordinate())) {
+			neighbours[numberOfNeighbours] = new Square(square.getXCoordinate() - 1,
+					square.getYCoordinate());
 			numberOfNeighbours++;
 		}
-		if (!isWallRight(square.getxCoord(), square.getyCoord())) {
-			neighbours[numberOfNeighbours] = new Square(square.getxCoord() + 1,
-					square.getyCoord());
+		if (!isWallRight(square.getXCoordinate(), square.getYCoordinate())) {
+			neighbours[numberOfNeighbours] = new Square(square.getXCoordinate() + 1,
+					square.getYCoordinate());
 			numberOfNeighbours++;
 		}
-		if (!isWallAbove(square.getxCoord(), square.getyCoord())) {
-			neighbours[numberOfNeighbours] = new Square(square.getxCoord(),
-					square.getyCoord() - 1);
+		if (!isWallAbove(square.getXCoordinate(), square.getYCoordinate())) {
+			neighbours[numberOfNeighbours] = new Square(square.getXCoordinate(),
+					square.getYCoordinate() - 1);
 			numberOfNeighbours++;
 		}
-		if (!isWallBelow(square.getxCoord(), square.getyCoord())) {
-			neighbours[numberOfNeighbours] = new Square(square.getxCoord(),
-					square.getyCoord() + 1);
+		if (!isWallBelow(square.getXCoordinate(), square.getYCoordinate())) {
+			neighbours[numberOfNeighbours] = new Square(square.getXCoordinate(),
+					square.getYCoordinate() + 1);
 			numberOfNeighbours++;
 		}
 		neighbours[numberOfNeighbours] = square;
 		//find all neighbours}
-
+		
 		// remove nulls{
 		int realLength = 0;
 		boolean found = false;
@@ -107,10 +107,10 @@ public class Maze {
 	}
 	private static boolean isNeighbour(Square a, Square b){
 		//takes two squares and says whether or not they are direct neighbours
-		int x = a.getxCoord();
-		int y = a.getyCoord();
-		int x2 = b.getxCoord();
-		int y2 = b.getyCoord();
+		int x = a.getXCoordinate();
+		int y = a.getYCoordinate();
+		int x2 = b.getXCoordinate();
+		int y2 = b.getYCoordinate();
 		return (x2-1==x && y2==y)||(x2+1==x && y2==y)||(x2==x && y2-1==y)||(x2==x && y2+1==y);
 	}
 	private void removeWall(Square[] area){
@@ -121,28 +121,28 @@ public class Maze {
 		int numberToRemove=2;
 		//may or may not want to remove multiple walls to connect to multiple areas?
 		for (int j = 0; j<numberToRemove;j++){
-
-
-			int randomNum = (int) (Math.random()*neighbours.length);
-			Square chosen = neighbours[randomNum];
-			//choose a random square from the list of neighbours
-			Square areaSquareChosen = new Square(0,0);
-			for (int i = 0; i<area.length; i++){
-				if (isNeighbour(area[i],chosen)){
-					areaSquareChosen=area[i];
-					break;
-				}
+			
+		
+		int randomNum = (int) (Math.random()*neighbours.length);
+		Square chosen = neighbours[randomNum];
+		//choose a random square from the list of neighbours
+		Square areaSquareChosen = new Square(0,0);
+		for (int i = 0; i<area.length; i++){
+			if (isNeighbour(area[i],chosen)){
+				areaSquareChosen=area[i];
+				break;
 			}
-			//find a square in the area adjacent to that one
-			int x = chosen.getxCoord();
-			int y = chosen.getyCoord();
-			int x2 = areaSquareChosen.getxCoord();
-			int y2 = areaSquareChosen.getyCoord();
-			if (x==x2){
-				walls[0][Math.max(y,y2)][x]=false;
-			}else{
-				walls[1][Math.max(x2, x)][y]=false;
-			}
+		}
+		//find a square in the area adjacent to that one
+		int x = chosen.getXCoordinate();
+		int y = chosen.getYCoordinate();
+		int x2 = areaSquareChosen.getXCoordinate();
+		int y2 = areaSquareChosen.getYCoordinate();
+		if (x==x2){
+			walls[0][Math.max(y,y2)][x]=false;
+		}else{
+			walls[1][Math.max(x2, x)][y]=false;
+		}
 		}
 		//remove the wall between those two squares
 	}
@@ -152,7 +152,7 @@ public class Maze {
 		Square[] neighbours = new Square[49];
 		//return all walled neighbours{
 		for (int i = 0; i<area.length;i++){
-			neighbours =  merge(neighbours,walledNeighbours(area[i]));
+			neighbours =  merge(neighbours,walledNeighbours(area[i]));	
 		}
 		//return all walled neighbours}
 		//remove any squares found that are actually in the area itself{
@@ -184,24 +184,24 @@ public class Maze {
 		Square[] neighbours = new Square[4];
 		int numberOfNeighbours = 0;
 		//find all walled neighbours{
-		if (isWallLeft(square.getxCoord(), square.getyCoord())&&square.getxCoord()-1>=0) {
-			neighbours[numberOfNeighbours] = new Square(square.getxCoord() - 1,
-					square.getyCoord());
+		if (isWallLeft(square.getXCoordinate(), square.getYCoordinate())&&square.getXCoordinate()-1>=0) {
+			neighbours[numberOfNeighbours] = new Square(square.getXCoordinate() - 1,
+					square.getYCoordinate());
 			numberOfNeighbours++;
 		}
-		if (isWallRight(square.getxCoord(), square.getyCoord())&&square.getxCoord()+1<7) {
-			neighbours[numberOfNeighbours] = new Square(square.getxCoord() + 1,
-					square.getyCoord());
+		if (isWallRight(square.getXCoordinate(), square.getYCoordinate())&&square.getXCoordinate()+1<7) {
+			neighbours[numberOfNeighbours] = new Square(square.getXCoordinate() + 1,
+					square.getYCoordinate());
 			numberOfNeighbours++;
 		}
-		if (isWallAbove(square.getxCoord(), square.getyCoord())&&square.getyCoord()-1>=0) {
-			neighbours[numberOfNeighbours] = new Square(square.getxCoord(),
-					square.getyCoord() - 1);
+		if (isWallAbove(square.getXCoordinate(), square.getYCoordinate())&&square.getYCoordinate()-1>=0) {
+			neighbours[numberOfNeighbours] = new Square(square.getXCoordinate(),
+					square.getYCoordinate() - 1);
 			numberOfNeighbours++;
 		}
-		if (isWallBelow(square.getxCoord(), square.getyCoord())&&square.getyCoord()+1<7) {
-			neighbours[numberOfNeighbours] = new Square(square.getxCoord(),
-					square.getyCoord() + 1);
+		if (isWallBelow(square.getXCoordinate(), square.getYCoordinate())&&square.getYCoordinate()+1<7) {
+			neighbours[numberOfNeighbours] = new Square(square.getXCoordinate(),
+					square.getYCoordinate() + 1);
 			numberOfNeighbours++;
 		}
 		//find all walled neighbours}
@@ -230,7 +230,7 @@ public class Maze {
 	private Square[][] connections() {
 		//returns a list of what other squares each square in the maze is connected to
 		Square[][] connections = new Square[49][5];
-		for (int i = 0; i < 7; i++) {
+		for (int i = 0; i < 7; i++) { 
 			for (int j = 0; j < 7; j++) { //for each square...
 				connections[i + 7 * j] = neighbours(new Square(i, j));//find its neighbours
 			}
@@ -397,10 +397,6 @@ public class Maze {
 		return toReturn;
 	}
 
-	public static void main(String[] args) {
-		Maze maze = new Maze(40);
-		System.out.print(maze);
-	}
 }
 
 

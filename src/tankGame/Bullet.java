@@ -1,30 +1,30 @@
-package project;
+package tankGame;
 
 public class Bullet{
-
+	
 	private int timer;
 	private int owner;
 	private int angle;
 	private Point position;
 	private static final double bulletSpeed = 1.5;
-
+	
 	private GameEngine engine;
-
+	
 	public Bullet(int player, Point position, int angle, GameEngine e) {
 		this.owner = player;
 		this.angle = angle;
-		this.position = position;
-		this.timer = 1000; //set the time duration of the bullet's presence to 100 frames
+		this.position = position;		
+		this.timer = 300; //set the time duration of the bullet's presence to 100 frames
 		this.engine=e;
 	}
-
+	
 	public Point getPosition() {
 		return position;
 	}
 	public int getAngle(){
 		return angle;
 	}
-
+	
 	public void removeBullet(){
 		if (this.owner==0){
 			engine.player1.decreaseNumberOfBulletsFired();
@@ -33,39 +33,39 @@ public class Bullet{
 		}
 		GameEngine.bulletList.remove(this);
 	}
-
+	
 	public void moveBullet(){
-		Point nextPoint = new Point(this.position.getxCoord()
+		Point nextPoint = new Point(this.position.getXCoordinate()
 				+ (bulletSpeed * Math.cos(Math.toRadians(90-this.angle))),
-				this.position.getyCoord()
-						- (bulletSpeed * Math.sin(Math
+				this.position.getYCoordinate()
+				- (bulletSpeed * Math.sin(Math
 						.toRadians(90-this.angle))));
 		if (wallCrashHorizontal(nextPoint, GameEngine.bulletWidth)){ //if the bullet would go over any horizontal walls
 			flipBulletH();
-			nextPoint = new Point(this.position.getxCoord()
+			nextPoint = new Point(this.position.getXCoordinate()
 					+ (bulletSpeed * Math.cos(Math.toRadians(90-this.angle))),
-					this.position.getyCoord());
+					this.position.getYCoordinate());
 		}else if (wallCrashVertical(nextPoint, GameEngine.bulletWidth)){ // if the bullet would go over any vertical walls
 			flipBulletV();
-			nextPoint = new Point(this.position.getxCoord(),
-					this.position.getyCoord()
-							- (bulletSpeed * Math.sin(Math.toRadians(90-this.angle))));
+			nextPoint = new Point(this.position.getXCoordinate(),
+					this.position.getYCoordinate()
+					- (bulletSpeed * Math.sin(Math.toRadians(90-this.angle))));
 		}else if(cornerCrash(nextPoint,GameEngine.bulletWidth)){
 			if(this.currentYSquare()==(int)this.currentYSquare()){
 				flipBulletH();
-				nextPoint = new Point(this.position.getxCoord()
+				nextPoint = new Point(this.position.getXCoordinate()
 						+ (bulletSpeed * Math.cos(Math.toRadians(90-this.angle))),
-						this.position.getyCoord());
+						this.position.getYCoordinate());
 			}else{
 				flipBulletV();
-				nextPoint = new Point(this.position.getxCoord(),
-						this.position.getyCoord()
-								- (bulletSpeed * Math.sin(Math.toRadians(90-this.angle))));
+				nextPoint = new Point(this.position.getXCoordinate(),
+						this.position.getYCoordinate()
+						- (bulletSpeed * Math.sin(Math.toRadians(90-this.angle))));
 			}
 		}
 		this.position=nextPoint;
 	}
-
+	
 	public boolean reduceTimer(){
 		//count down the timer.  If time is up, remove the bullet.  Return whether the bullet was removed
 		timer--;
@@ -75,49 +75,49 @@ public class Bullet{
 		}
 		return false;
 	}
-
+	
 	private void flipBulletV(){
 		this.angle=(-this.angle) + 360;
 	}
-
+	
 	private void flipBulletH(){
 		if (this.angle>180){
 			this.angle = -this.angle+540;
 		}else{
 			this.angle=-this.angle+180;
 		}
-	}
-
+	}	
+	
 	public void tankCollision(){
 		//checks whether the bullet has collided with player1 or player2, calling the appropriate functions if so
-		if (collision(engine.player1)){
-			this.removeBullet();
-			engine.player1.hit();
-		}else if (collision(engine.player2)){
-			this.removeBullet();
-			engine.player2.hit();
-		}
-
+			if (collision(engine.player1)){
+				this.removeBullet();
+				engine.player1.hit();
+			}else if (collision(engine.player2)){
+				this.removeBullet();
+				engine.player2.hit();
+			}
+		
 	}
-
+	
 	private boolean collision(Player player){
 		//work out the distance between the centre of the bullet and the player
 		double distance = Point.distance(player.getCoordinates(),this.position);
 		//return whether they're overlapping
 		return (distance<=(GameEngine.tankWidth/2+GameEngine.bulletWidth/2));
 	}
-
+	
 	public double currentXSquare() {
 		// return the x value of the grid square the centre of the tank is currently in
 		for (int i =0; i<7;i++){
-			if ((GameEngine.wallWidth*(i+1)+GameEngine.squareWidth*i<this.position.getxCoord())&&
-					(GameEngine.wallWidth*(i+1)+GameEngine.squareWidth*(i+1))>this.position.getxCoord()){
+			if ((GameEngine.wallWidth*(i+1)+GameEngine.squareWidth*i<this.position.getXCoordinate())&&
+					(GameEngine.wallWidth*(i+1)+GameEngine.squareWidth*(i+1))>this.position.getXCoordinate()){
 				return i;
 			}
 		}
 		for (int i =0; i<8;i++){
-			if ((GameEngine.wallWidth*(i)+GameEngine.squareWidth*i<=this.position.getxCoord())&&
-					(GameEngine.wallWidth*(i+1)+GameEngine.squareWidth*(i+1))>this.position.getxCoord()){
+			if ((GameEngine.wallWidth*(i)+GameEngine.squareWidth*i<=this.position.getXCoordinate())&&
+					(GameEngine.wallWidth*(i+1)+GameEngine.squareWidth*(i+1))>this.position.getXCoordinate()){
 				return i-0.5;
 			}
 		}
@@ -127,21 +127,21 @@ public class Bullet{
 	public double currentYSquare() {
 		// return the y value of the grid square the centre of the tank is currently in
 		for (int i =0; i<7;i++){
-			if ((GameEngine.wallWidth*(i+1)+GameEngine.squareWidth*i<this.position.getyCoord())&&
-					(GameEngine.wallWidth*(i+1)+GameEngine.squareWidth*(i+1))>this.position.getyCoord()){
+			if ((GameEngine.wallWidth*(i+1)+GameEngine.squareWidth*i<this.position.getYCoordinate())&&
+					(GameEngine.wallWidth*(i+1)+GameEngine.squareWidth*(i+1))>this.position.getYCoordinate()){
 				return i;
 			}
 		}
 		for (int i =0; i<8;i++){
-			if ((GameEngine.wallWidth*(i)+GameEngine.squareWidth*i<=this.position.getyCoord())&&
-					(GameEngine.wallWidth*(i+1)+GameEngine.squareWidth*(i+1))>this.position.getyCoord()){
+			if ((GameEngine.wallWidth*(i)+GameEngine.squareWidth*i<=this.position.getYCoordinate())&&
+					(GameEngine.wallWidth*(i+1)+GameEngine.squareWidth*(i+1))>this.position.getYCoordinate()){
 				return i-0.5;
 			}
 		}
 		return -1;//Throw an exception
 
 	}
-
+	
 	private boolean wallCrashVertical(Point p, int w){
 		//when given a point p, returns whether or not the circular object of width w at that point is in/over a vertical wall
 		w=w/2;
@@ -152,11 +152,11 @@ public class Bullet{
 		//if there is a wall to the left of this square,
 		boolean byLeftWall = engine.maze.isWallLeft((int)this.currentXSquare(), (int)this.currentYSquare());
 		//and the object is in/over the left wall,
-		boolean inLeftWall = (p.getxCoord()-w<=
+		boolean inLeftWall = (p.getXCoordinate()-w<=
 				((int)this.currentXSquare())*GameEngine.squareWidth+((int)this.currentXSquare()+1)*GameEngine.wallWidth);
 		//same for right:
 		boolean byRightWall = engine.maze.isWallRight((int)this.currentXSquare(), (int)this.currentYSquare());
-		boolean inRightWall = (p.getxCoord()+w>=
+		boolean inRightWall = (p.getXCoordinate()+w>=
 				((int)this.currentXSquare()+1+xWall)*GameEngine.squareWidth+((int)this.currentXSquare()+1+xWall)*GameEngine.wallWidth);
 		return ((byLeftWall&&inLeftWall)||(byRightWall&&inRightWall));
 	}
@@ -169,11 +169,11 @@ public class Bullet{
 		}
 		//same for top:
 		boolean byTopWall = engine.maze.isWallAbove((int)this.currentXSquare(), (int)this.currentYSquare());
-		boolean inTopWall = (p.getyCoord()-w<=
+		boolean inTopWall = (p.getYCoordinate()-w<=
 				((int)this.currentYSquare())*GameEngine.squareWidth+((int)this.currentYSquare()+1)*GameEngine.wallWidth);
 		//same for bottom
 		boolean byBottomWall = engine.maze.isWallBelow((int) this.currentXSquare(), (int) this.currentYSquare());
-		boolean inBottomWall = (p.getyCoord()+w>=
+		boolean inBottomWall = (p.getYCoordinate()+w>=
 				((int)this.currentYSquare()+1+yWall)*GameEngine.squareWidth+((int)this.currentYSquare()+1+yWall)*GameEngine.wallWidth);
 		return ((byTopWall&&inTopWall)|(byBottomWall&&inBottomWall));
 	}
@@ -183,12 +183,12 @@ public class Bullet{
 		//Work out the nearest corner to p{
 		int x=0;
 		int y=0;//remember, here x and y are corners NOT squares
-		int xCounter=(int)p.getxCoord();
+		int xCounter=(int)p.getXCoordinate();
 		while (xCounter>GameEngine.wallWidth+GameEngine.squareWidth/2){
 			xCounter=xCounter-GameEngine.wallWidth-GameEngine.squareWidth;
 			x++;
 		}
-		int yCounter=(int)p.getyCoord();
+		int yCounter=(int)p.getYCoordinate();
 		while (yCounter>GameEngine.wallWidth+GameEngine.squareWidth/2){
 			yCounter=yCounter-GameEngine.wallWidth-GameEngine.squareWidth;
 			y++;

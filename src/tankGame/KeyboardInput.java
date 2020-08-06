@@ -1,4 +1,4 @@
-package project;
+package tankGame;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyAdapter;
