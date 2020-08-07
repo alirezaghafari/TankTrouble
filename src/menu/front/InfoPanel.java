@@ -1,6 +1,7 @@
 package menu.front;
 
 import menu.back.ClockDisplay;
+import tankGame.GameEngine;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -18,14 +19,16 @@ public class InfoPanel extends JPanel {
 
 
     private static boolean isShowing;
-    private JButton goBackIcon;
-    private JLabel userNameLabel;
-    private JLabel userIcon;
+    private static JButton goBackIcon;
+    private static JLabel userNameLabel;
+    private static JLabel userIcon;
+    private static JLabel singleWinsAndLosses;
+    private static JLabel multiWinsAndLosses;
     private static String userName = "user1";
     private static String timePlayed = "00:00:00";
     private static JButton logOutButton;
     private static JButton exitButton;
-    private int multiWins = 2, multiLosses = 4, singleWins = 3, singleLosses = 1;
+    private int multiWins = 0, multiLosses = 0, singleWins = 0, singleLosses = 0;
     private static JLabel timeLabel;
 
 
@@ -175,11 +178,8 @@ public class InfoPanel extends JPanel {
         singlePlayerLabel.setLocation(25, 280);
         singlePlayerLabel.setForeground(Color.white);
 
-        JLabel singleWinsAndLosses = new JLabel("<html>Wins: " + singleWins + "<br>Losses: " + singleLosses + "</html>");
-        singleWinsAndLosses.setFont(new Font("Comic Sans MS", 10, 18));
-        singleWinsAndLosses.setSize(200, 60);
-        singleWinsAndLosses.setLocation(65, 310);
-        singleWinsAndLosses.setForeground(Color.white);
+        singleWinsAndLosses = new JLabel();
+
 
 
         JLabel multiPlayerLabel = new JLabel("Multi player");
@@ -189,11 +189,10 @@ public class InfoPanel extends JPanel {
         multiPlayerLabel.setForeground(Color.white);
 
 
-        JLabel multiWinsAndLosses = new JLabel("<html>Wins: " + multiWins + "<br>Losses: " + multiLosses + "</html>");
-        multiWinsAndLosses.setFont(new Font("Comic Sans MS", 10, 18));
-        multiWinsAndLosses.setSize(200, 60);
-        multiWinsAndLosses.setLocation(65, 420);
-        multiWinsAndLosses.setForeground(Color.white);
+        multiWinsAndLosses = new JLabel();
+
+        reloadScorers();
+
 
 
         logOutButton = new JButton("Log Out");
@@ -256,6 +255,7 @@ public class InfoPanel extends JPanel {
             animate.start();
             isShowing = true;
             MenuFrame.getInstance().removeItemsButton();
+            reloadScorers();
 
         }
     }
@@ -297,6 +297,23 @@ public class InfoPanel extends JPanel {
     public static void setUserName(String userName) {
         InfoPanel.getInstance().userName = userName;
         InfoPanel.getInstance().userNameLabel.setText(userName);
+    }
+
+    public void reloadScorers(){
+        singleWins= GameEngine.player2_score;
+        singleLosses=GameEngine.player1_score;
+
+        singleWinsAndLosses.setText("<html>Wins: " + singleWins + "<br>Losses: " + singleLosses + "</html>");
+        singleWinsAndLosses.setFont(new Font("Comic Sans MS", 10, 18));
+        singleWinsAndLosses.setSize(200, 60);
+        singleWinsAndLosses.setLocation(65, 310);
+        singleWinsAndLosses.setForeground(Color.white);
+
+        multiWinsAndLosses.setText("<html>Wins: " + multiWins + "<br>Losses: " + multiLosses + "</html>");
+        multiWinsAndLosses.setFont(new Font("Comic Sans MS", 10, 18));
+        multiWinsAndLosses.setSize(200, 60);
+        multiWinsAndLosses.setLocation(65, 420);
+        multiWinsAndLosses.setForeground(Color.white);
     }
 
     public JLabel getUserNameLabel() {
