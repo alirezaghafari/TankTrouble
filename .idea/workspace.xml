@@ -2,44 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f333d852-8d30-410c-87b3-6a8006cafc40" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/menu/back/ClockDisplay.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/menu/back/DisplayNumber.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documents/images/GoBackIcon.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documents/images/GoBackIconReverse.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documents/images/ItemsIcon.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documents/images/LoginBackground.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documents/images/LoginBackground2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documents/images/MenuBackground.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documents/images/MultiIcon.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documents/images/OptionsIcon.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documents/images/OptionsPanelBackground.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documents/images/SinglePlayerIcon.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documents/images/UserIcon.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documents/images/signInBackground.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documents/images/signUpBackground.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/backCode/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel$Animate$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel$Animate.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/MenuFrame$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/MenuFrame$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/MenuFrame$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/MenuFrame$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/MenuFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/OptionsPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/OptionsPanel$Animate$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/OptionsPanel$Animate.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/OptionsPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/SignInPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/SignInPanel$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/SignInPanel$Animate$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/SignInPanel$Animate.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/SignInPanel$HintTextField.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/SignInPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/SignUpFrame$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/SignUpFrame$HintTextField.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/SignUpFrame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Documents/LoginInfo/listOfUsers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/LoginInfo/listOfUsers.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/InfoPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/InfoPanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/InfoPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/InfoPanel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/InfoPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/InfoPanel$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/InfoPanel$Animate$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/InfoPanel$Animate$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/InfoPanel$Animate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/InfoPanel$Animate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/InfoPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/InfoPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignInPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignInPanel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignInPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignInPanel$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignInPanel$HintPasswordField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignInPanel$HintPasswordField.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignInPanel$HintTextField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignInPanel$HintTextField.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignInPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignInPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignUpFrame$HintPasswordField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignUpFrame$HintPasswordField.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignUpFrame$HintTextField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignUpFrame$HintTextField.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignUpFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignUpFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menu/front/InfoPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/front/InfoPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menu/front/SignInPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/front/SignInPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menu/front/SignUpFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/front/SignUpFrame.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -113,6 +96,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="menu.back.Main" />
+      <module name="FinalProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="menu.back.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="menu.frontCode.backCode.Main" />
       <module name="FinalProject" />
@@ -145,6 +141,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.FileOperations" />
         <item itemvalue="Application.Maze" />
         <item itemvalue="Application.Main" />
@@ -166,7 +163,7 @@
       <workItem from="1596145972938" duration="26204000" />
       <workItem from="1596392584258" duration="30644000" />
       <workItem from="1596579447612" duration="994000" />
-      <workItem from="1596610998660" duration="30109000" />
+      <workItem from="1596610998660" duration="34029000" />
     </task>
     <servers />
   </component>

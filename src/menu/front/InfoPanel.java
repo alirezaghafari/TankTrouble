@@ -1,9 +1,14 @@
 package menu.front;
 
+import menu.back.ClockDisplay;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import javax.swing.*;
 
 public class InfoPanel extends JPanel {
@@ -17,11 +22,13 @@ public class InfoPanel extends JPanel {
     private JLabel userNameLabel;
     private JLabel userIcon;
     private static String userName = "user1";
-    private static String timePlayed = "00:00";
+    private static String timePlayed = "00:00:00";
     private static JButton logOutButton;
     private static JButton exitButton;
     private int multiWins = 2, multiLosses = 4, singleWins = 3, singleLosses = 1;
     private static JLabel timeLabel;
+
+
 
     private InfoPanel() {
         setLayout(null);
@@ -30,12 +37,12 @@ public class InfoPanel extends JPanel {
         addFields();
     }
 
+    //set panel background
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); // paint the background image and scale it to fill the entire space
         g.drawImage(new ImageIcon("Documents/images/menuIcons/OptionsPanelBackground.jpg").getImage(), 0, 0, null);
     }
-
 
     public static class Animate {
 
@@ -132,35 +139,6 @@ public class InfoPanel extends JPanel {
 
     }
 
-    public static InfoPanel getInstance() {
-        return Objects.requireNonNullElseGet(infoPanel, () -> infoPanel = new InfoPanel());
-    }
-
-    public void showPanel() {
-        if (!isShowing) {
-            Rectangle from = new Rectangle(-220, 3, 220, 707);
-            Rectangle to = new Rectangle(0, 3, 220, 707);
-
-            Animate animate = new Animate(this, from, to);
-            animate.start();
-            isShowing = true;
-            MenuFrame.getInstance().removeItemsButton();
-
-        }
-    }
-
-    public void hidePanel() {
-        if (isShowing) {
-            MenuFrame.getInstance().addItemsButton();
-            Rectangle from = new Rectangle(0, 3, 220, 707);
-            Rectangle to = new Rectangle(-220, 3, 220, 707);
-
-            Animate animate = new Animate(this, from, to);
-            animate.start();
-
-            isShowing = false;
-        }
-    }
 
     public void addFields() {
         goBackIcon = new JButton(new ImageIcon("Documents/images/menuIcons/GoBackIcon.jpg"));
@@ -184,7 +162,7 @@ public class InfoPanel extends JPanel {
         userNameLabel.setFont(new Font("Comic Sans MS", 10, 28));
         userNameLabel.setForeground(Color.white);
 
-        timeLabel = new JLabel("<html>Hours you have played:<br>&#160; &#160;&#160;&#160;&#160;" + timePlayed + "</html>");
+        timeLabel = new JLabel("<html>Hours you have played:<br>&#160; &#160;&#160;&#160;" + timePlayed + "</html>");
         timeLabel.setFont(new Font("Comic Sans MS", 10, 22));
         timeLabel.setSize(200, 160);
         timeLabel.setLocation(25, 110);
@@ -265,6 +243,55 @@ public class InfoPanel extends JPanel {
         add(logOutButton);
         add(exitButton);
 
+        hoursCounter();
+
+    }
+
+    public void showPanel() {
+        if (!isShowing) {
+            Rectangle from = new Rectangle(-220, 3, 220, 707);
+            Rectangle to = new Rectangle(0, 3, 220, 707);
+
+            Animate animate = new Animate(this, from, to);
+            animate.start();
+            isShowing = true;
+            MenuFrame.getInstance().removeItemsButton();
+
+        }
+    }
+
+    public void hidePanel() {
+        if (isShowing) {
+            MenuFrame.getInstance().addItemsButton();
+            Rectangle from = new Rectangle(0, 3, 220, 707);
+            Rectangle to = new Rectangle(-220, 3, 220, 707);
+
+            Animate animate = new Animate(this, from, to);
+            animate.start();
+
+            isShowing = false;
+        }
+    }
+
+    public void hoursCounter() {
+        Thread thread =new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ClockDisplay clock=new ClockDisplay();
+                while(true){
+                    timePlayed=clock.getCurrentTime();
+                    timeLabel.setText("<html>Hours you have played:<br>&#160; &#160;&#160;&#160;" + timePlayed + "</html>");
+                    try {
+                        TimeUnit.SECONDS.sleep(1);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+        thread.start();
+
+
     }
 
     public static void setUserName(String userName) {
@@ -280,7 +307,7 @@ public class InfoPanel extends JPanel {
         InfoPanel.timePlayed = timePlayed;
     }
 
-    public boolean isOpen() {
-        return isShowing;
+    public static InfoPanel getInstance() {
+        return Objects.requireNonNullElseGet(infoPanel, () -> infoPanel = new InfoPanel());
     }
 }

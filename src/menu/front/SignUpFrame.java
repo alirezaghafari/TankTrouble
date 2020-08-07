@@ -97,7 +97,6 @@ public class SignUpFrame extends JFrame {
                         MenuFrame.showFrame();
                     }else {
                         addWarningLabel("Username already taken!");
-                        System.out.println("hi");
                     }
                 }else {
                     addWarningLabel("Only a-z, 0-9, and underscores allowed!");
@@ -225,7 +224,7 @@ public class SignUpFrame extends JFrame {
         signUpFrame.repaint();
     }
 
-    public static void hideFrame() {
+    public  void hideFrame() {
         SignUpFrame signUpFrame = SignUpFrame.getInstance();
         signUpFrame.setVisible(false);
     }

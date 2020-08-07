@@ -179,6 +179,7 @@ public class SignInPanel extends JPanel {
                 if(FileOperations.getInstance().isPasswordSaved(userNameField.getText())) {
                     InfoPanel.getInstance().setUserName(userNameField.getText());
                     hidePanel();
+                    SignUpFrame.getInstance().hideFrame();
                     MenuFrame.showFrame();
                     isPasswordSaved=false;
                 }
@@ -186,6 +187,7 @@ public class SignInPanel extends JPanel {
                     if (FileOperations.getInstance().signInCheck(userNameField.getText(), String.valueOf(passwordField.getPassword()))) {
                         InfoPanel.getInstance().setUserName(userNameField.getText());
                         hidePanel();
+                        SignUpFrame.getInstance().hideFrame();
                         MenuFrame.showFrame();
                     } else {
                         addWarningLabel("Incorrect password or username!");
