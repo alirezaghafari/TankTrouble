@@ -3,22 +3,43 @@
   <component name="ChangeListManager">
     <list default="true" id="f333d852-8d30-410c-87b3-6a8006cafc40" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel$Animate$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel$Animate$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel$Animate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel$Animate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/SignInFrame$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/SignInFrame$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/SignInFrame$HintTextField.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/SignInFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/SignUpFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/frontCode/SignUpFrame$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/SignUpFrame$HintTextField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/frontCode/SignUpFrame$HintTextField.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/SignUpFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/frontCode/SignUpFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/frontCode/InfoPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontCode/InfoPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/frontCode/OptionsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontCode/OptionsPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/frontCode/SignInFrame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/frontCode/SignUpFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontCode/SignUpFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Documents/images/GoBackIcon.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Documents/images/GoBackIconReverse.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Documents/images/ItemsIcon.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Documents/images/LoginBackground.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Documents/images/LoginBackground2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Documents/images/MenuBackground.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Documents/images/MultiIcon.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Documents/images/OptionsIcon.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Documents/images/OptionsPanelBackground.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Documents/images/SinglePlayerIcon.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Documents/images/UserIcon.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Documents/images/signInBackground.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Documents/images/signUpBackground.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/backCode/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel$Animate$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel$Animate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/InfoPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/MenuFrame$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/MenuFrame$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/MenuFrame$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/MenuFrame$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/MenuFrame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/OptionsPanel$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/OptionsPanel$Animate$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/OptionsPanel$Animate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/OptionsPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/SignInPanel$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/SignInPanel$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/SignInPanel$Animate$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/SignInPanel$Animate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/SignInPanel$HintTextField.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/SignInPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/SignUpFrame$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/SignUpFrame$HintTextField.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/frontCode/SignUpFrame.class" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,9 +64,15 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="tankGame" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -59,13 +86,26 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="InfoPanel" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="frontCode.InfoPanel" />
+  <component name="RunManager" selected="Application.Main (1)">
+    <configuration name="FileOperations" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="menu.back.FileOperations" />
       <module name="FinalProject" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="frontCode.*" />
+          <option name="PATTERN" value="menu.back.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InfoPanel" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="menu.frontCode.InfoPanel" />
+      <module name="FinalProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value=".*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -74,7 +114,7 @@
       </method>
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="backCode.Main" />
+      <option name="MAIN_CLASS_NAME" value="menu.frontCode.backCode.Main" />
       <module name="FinalProject" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <RunnerSettings RunnerId="Run" />
@@ -83,8 +123,30 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="menu.back.Main" />
+      <module name="FinalProject" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Maze" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tankGame.Maze" />
+      <module name="FinalProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tankGame.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.FileOperations" />
+        <item itemvalue="Application.Maze" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.InfoPanel" />
       </list>
@@ -102,7 +164,9 @@
       <updated>1596140594349</updated>
       <workItem from="1596140597614" duration="1259000" />
       <workItem from="1596145972938" duration="26204000" />
-      <workItem from="1596392584258" duration="27453000" />
+      <workItem from="1596392584258" duration="30644000" />
+      <workItem from="1596579447612" duration="994000" />
+      <workItem from="1596610998660" duration="30109000" />
     </task>
     <servers />
   </component>
