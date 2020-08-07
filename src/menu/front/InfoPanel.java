@@ -19,6 +19,7 @@ public class InfoPanel extends JPanel {
     private static String userName = "user1";
     private static String timePlayed = "00:00";
     private static JButton logOutButton;
+    private static JButton exitButton;
     private int multiWins = 2, multiLosses = 4, singleWins = 3, singleLosses = 1;
     private static JLabel timeLabel;
 
@@ -178,8 +179,8 @@ public class InfoPanel extends JPanel {
         userIcon.setSize(30, 30);
 
         userNameLabel = new JLabel(userName);
-        userNameLabel.setSize(200, 30);
-        userNameLabel.setLocation(60, 70);
+        userNameLabel.setSize(200, 50);
+        userNameLabel.setLocation(60, 60);
         userNameLabel.setFont(new Font("Comic Sans MS", 10, 28));
         userNameLabel.setForeground(Color.white);
 
@@ -219,7 +220,7 @@ public class InfoPanel extends JPanel {
 
         logOutButton = new JButton("Log Out");
         logOutButton.setFont(new Font("Comic Sans MS", 2, 16));
-        logOutButton.setLocation(60, 660);
+        logOutButton.setLocation(110, 660);
         logOutButton.setSize(95, 35);
         logOutButton.addActionListener(new ActionListener() {
             @Override
@@ -234,6 +235,23 @@ public class InfoPanel extends JPanel {
                 }
             }
         });
+        exitButton = new JButton(" Exit ");
+        exitButton.setFont(new Font("Comic Sans MS", 2, 16));
+        exitButton.setLocation(10, 660);
+        exitButton.setSize(95, 35);
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                hidePanel();
+                String[] options = {"Exit", "Cancel"};
+                if (JOptionPane.showOptionDialog(null, "Are you sure you want to exit?",
+                        "Exit",
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.CLOSED_OPTION, null, options, options[0]) == 0) {
+                    System.exit(0);
+                }
+            }
+        });
+
 
 
         add(userNameLabel);
@@ -245,11 +263,17 @@ public class InfoPanel extends JPanel {
         add(multiPlayerLabel);
         add(multiWinsAndLosses);
         add(logOutButton);
+        add(exitButton);
 
     }
 
     public static void setUserName(String userName) {
-        InfoPanel.userName = userName;
+        InfoPanel.getInstance().userName = userName;
+        InfoPanel.getInstance().userNameLabel.setText(userName);
+    }
+
+    public JLabel getUserNameLabel() {
+        return userNameLabel;
     }
 
     public static void setTimePlayed(String timePlayed) {

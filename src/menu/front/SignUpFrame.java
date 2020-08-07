@@ -1,20 +1,25 @@
 package menu.front;
 
+import menu.back.FileOperations;
+
 import javax.swing.*;
 import java.awt.*;
 
 import java.awt.event.*;
 
 public class SignUpFrame extends JFrame {
+    //this is to implement singleton design pattern
+    private static SignUpFrame signUpFrame;
+
+
     private static JTextField userNameField;
     private static JPasswordField passwordField;
     private static JCheckBox checkBox;
     private static JButton signUpButton;
     private static JButton signInButton;
     private static JLabel rememberMe;
+    private static JLabel warningLabel=new JLabel();
 
-    //this is to implement singleton design pattern
-    private static SignUpFrame signUpFrame;
 
     private SignUpFrame() {
         super("Login");
@@ -81,10 +86,22 @@ public class SignUpFrame extends JFrame {
         signUpButton.setSize(90, 25);
         signUpButton.setForeground(Color.darkGray);
         signUpButton.addActionListener(e -> {
-            if (true) {
-                hideFrame();
-                MenuFrame.showFrame();
-            }
+            boolean isInCorrectFormat= isInputInCorrectFormat(userNameField.getText())&& isInputInCorrectFormat(String.valueOf(passwordField.getPassword()));
+            if(passwordField.getPassword().length<6||userNameField.getText().length()<6)
+                addWarningLabel("Fields must have at least 6 characters!");
+            else
+                if(isInCorrectFormat) {
+                    if (FileOperations.getInstance().signUpCheck(userNameField.getText(), String.valueOf(passwordField.getPassword()), checkBox.isSelected())) {
+                        InfoPanel.getInstance().setUserName(userNameField.getText());
+                        hideFrame();
+                        MenuFrame.showFrame();
+                    }else {
+                        addWarningLabel("Username already taken!");
+                        System.out.println("hi");
+                    }
+                }else {
+                    addWarningLabel("Only a-z, 0-9, and underscores allowed!");
+                }
         });
 
 
@@ -96,6 +113,12 @@ public class SignUpFrame extends JFrame {
         signInButton.addActionListener(e -> {
             SignInPanel.getInstance().showPanel();
         });
+
+
+        warningLabel.setForeground(Color.RED);
+        warningLabel.setSize(500,20);
+        warningLabel.setFont(new Font("Arial", 10, 14));
+        warningLabel.setLocation(183,320);
 
 
         addItems();
@@ -189,12 +212,13 @@ public class SignUpFrame extends JFrame {
 
 
 
-
     public static void showFrame() {
         SignUpFrame signUpFrame = SignUpFrame.getInstance();
         SignUpFrame.getInstance().setLocationRelativeTo(null);
+        SignUpFrame.getInstance().removeWarningLabel();
         userNameField.setText("  USERNAME:");
         passwordField.setText("  PASSWORD:");
+        passwordField.setEchoChar((char)0);
         checkBox.setSelected(false);
         signUpFrame.setVisible(true);
         signUpFrame.revalidate();
@@ -228,6 +252,28 @@ public class SignUpFrame extends JFrame {
         revalidate();
         repaint();
 
+    }
+    public boolean isInputInCorrectFormat(String input){
+        boolean isInCorrectFormat=true;
+        for(char ch:input.toCharArray()){
+            int asciiCode= ch;
+            if(asciiCode>122||(asciiCode<97&&asciiCode>90)||(asciiCode<65&&asciiCode>57)||asciiCode<48)
+                if(asciiCode!=45&&asciiCode!=95)
+                    isInCorrectFormat=false;
+        }
+        return isInCorrectFormat;
+    }
+    public void addWarningLabel(String message){
+        removeWarningLabel();
+        warningLabel.setText(message);
+        add(warningLabel);
+        revalidate();
+        repaint();
+    }
+    public void removeWarningLabel(){
+        remove(warningLabel);
+        revalidate();
+        repaint();
     }
 
 }

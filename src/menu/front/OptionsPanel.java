@@ -15,6 +15,7 @@ public class OptionsPanel extends JPanel {
 
     //this is to implement singleton design pattern
     private static OptionsPanel optionsPanel;
+
     private static boolean isShowing;
 
 

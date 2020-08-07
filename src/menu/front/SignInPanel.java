@@ -1,11 +1,10 @@
 package menu.front;
 
 
+import menu.back.FileOperations;
+
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
+import java.awt.event.*;
 import java.util.Objects;
 import javax.swing.*;
 
@@ -18,6 +17,8 @@ public class SignInPanel extends JPanel {
     private static JPasswordField passwordField;
     private static JButton signUpButton;
     private static JButton signInButton;
+    private static boolean isPasswordSaved=false;
+    private static JLabel warningLabel=new JLabel();
 
 
     private static boolean isShowing;
@@ -115,8 +116,10 @@ public class SignInPanel extends JPanel {
 
     public void showPanel() {
         if (!isShowing) {
+            removeWarningLabel();
             userNameField.setText("  USERNAME:");
             passwordField.setText("  PASSWORD:");
+            passwordField.setEchoChar((char)0);
             signInPanel.revalidate();
             signInPanel.repaint();
             Rectangle from = new Rectangle(20, -347, 560, 347);
@@ -150,23 +153,43 @@ public class SignInPanel extends JPanel {
         userNameField.setBackground(Color.gray);
         userNameField.setForeground(Color.white);
 
+
         passwordField = new HintPasswordField("  PASSWORD:");
         passwordField.setEchoChar((char)0);
         passwordField.setSize(250, 40);
         passwordField.setLocation(153, 250);
         passwordField.setBackground(Color.gray);
         passwordField.setForeground(Color.white);
+        passwordField.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                isPasswordSaved=FileOperations.getInstance().isPasswordSaved(userNameField.getText());
+                if(isPasswordSaved)
+                    passwordField.setText("myPassword");
+            }
+        });
 
         signInButton = new JButton("Sign in");
-        signInButton.setLocation(341, 305);
+        signInButton.setLocation(341, 300);
         signInButton.setSize(90, 25);
         signInButton.setForeground(Color.darkGray);
         signInButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (true) {
+                if(FileOperations.getInstance().isPasswordSaved(userNameField.getText())) {
+                    InfoPanel.getInstance().setUserName(userNameField.getText());
                     hidePanel();
                     MenuFrame.showFrame();
+                    isPasswordSaved=false;
+                }
+                else {
+                    if (FileOperations.getInstance().signInCheck(userNameField.getText(), String.valueOf(passwordField.getPassword()))) {
+                        InfoPanel.getInstance().setUserName(userNameField.getText());
+                        hidePanel();
+                        MenuFrame.showFrame();
+                    } else {
+                        addWarningLabel("Incorrect password or username!");
+                    }
                 }
             }
         });
@@ -180,9 +203,16 @@ public class SignInPanel extends JPanel {
         signUpButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                SignUpFrame.showFrame();
                 hidePanel();
             }
         });
+
+        warningLabel.setForeground(Color.RED);
+        warningLabel.setSize(500,20);
+        warningLabel.setFont(new Font("Arial", 10, 14));
+        warningLabel.setLocation(170,323);
+
 
         add(signInButton);
         add(userNameField);
@@ -264,5 +294,18 @@ public class SignInPanel extends JPanel {
         public String getText() {
             return showingHint ? "" : super.getText();
         }
+    }
+
+    public void addWarningLabel(String message){
+        removeWarningLabel();
+        warningLabel.setText(message);
+        add(warningLabel);
+        revalidate();
+        repaint();
+    }
+    public void removeWarningLabel(){
+        remove(warningLabel);
+        revalidate();
+        repaint();
     }
 }

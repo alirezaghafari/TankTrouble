@@ -1,11 +1,19 @@
 package menu.back;
 
+import menu.front.OptionsPanel;
+
 import java.io.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class FileOperations {
+    //this is to implement singleton pattern
+    private static FileOperations instance=null;
+
+    private FileOperations(){}
+
     public boolean isPasswordSaved(String username){
         File userList=new File("Documents/LoginInfo/listOfUsers.txt");
         ArrayList<String> users=new ArrayList<>();
@@ -48,19 +56,18 @@ public class FileOperations {
             e.printStackTrace();
         } catch (FileNotFoundException e){
             return false;
-            //TODO: catch
         } catch (IOException e) {
             e.printStackTrace();
         }
         return inputPassword.equals(savedPassword);
     }
-    public void signUpInfo(String username,String password,boolean rememberMe){
+    public boolean signUpCheck(String username,String password,boolean rememberMe){
+        boolean canSignUp=true;
         File infoFile=new File("Documents/LoginInfo/"+username+".bin");
         if(infoFile.exists()) {
-            //TODO: print appropriate message
-        }
-        // to save a list of userNames
-        else{
+            canSignUp = false;
+        }else{
+            // to save a list of userNames
             try {
                 FileWriter fileWriter=new FileWriter(new File("Documents/LoginInfo/listOfUsers.txt"),true);
                 fileWriter.write(username+"#"+rememberMe+"\n");
@@ -85,6 +92,10 @@ public class FileOperations {
                 e.printStackTrace();
             }
         }
+        return canSignUp;
+    }
+    public static FileOperations getInstance() {
+        return Objects.requireNonNullElseGet(instance, () -> instance = new FileOperations());
     }
 
 }
