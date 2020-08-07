@@ -76,8 +76,9 @@ public class MenuFrame extends JFrame {
         singlePlayerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                hideFrame();
-                GameLauncher.launch(true);
+                hideFrame();
+                GameLauncher gameLauncher=new GameLauncher();
+                gameLauncher.launch(true);
             }
         });
 

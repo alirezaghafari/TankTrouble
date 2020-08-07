@@ -2,6 +2,8 @@ package tankGame;
 
 //import java.util.Map;
 
+import menu.front.OptionsPanel;
+
 public class Player {
 	private int playerNumber; // defines whether this is player 1 or 2
 	private int numberOfBulletsFired; // stores the number of bullets currently
@@ -12,9 +14,11 @@ public class Player {
 	private static final int rotationSpeed = 3; // the speed at which each tank can turn
 	private static final double forwardSpeed = 1; // the speed at which each tank can move forwards
 	private static final double reverseSpeed = -.65; // the speed at which each tank can move backwards
+	private double stamina;
+	private double fireRate;
 	
 	private GameEngine engine;
-	
+
 	// Movement methods:
 	public void turnRight() {
 		this.direction += rotationSpeed;
@@ -185,12 +189,20 @@ public class Player {
 
 	// Death method:
 	public void hit() {
-		if (this.playerNumber == 0) {
-			GameEngine.player1_dead=true;
-		} else {
-			GameEngine.player2_dead=true;
+		if(stamina>fireRate){
+			stamina-=fireRate;
 		}
-		engine.roundOver();
+		else {
+			if (this.playerNumber == 0) {
+				GameEngine.player1_dead = true;
+			} else {
+				GameEngine.player2_dead = true;
+			}
+			setStamina();
+			engine.roundOver();
+		}
+		System.out.println(stamina);
+		System.out.println(fireRate);
 	}
 
 	public double currentXSquare() {
@@ -230,7 +242,7 @@ public class Player {
 
 	// Constructor
 	// Inputs:
-	// playerNo: 1 for WASD player, 2 for arrow player
+	// playerNo: 1 for computer, 2 for user
 	// x: x coordinate of the starting point
 	// y: y coordinate of the starting point
 	public Player(int playerNo, double x, double y,GameEngine e) {
@@ -239,6 +251,7 @@ public class Player {
 		this.direction = (int) (Math.random() * 360);
 		this.coordinates = new Point(x, y);
 		this.engine=e;
+		setStamina();setFireRate();
 	}
 	
 	// Getter and setter functions:
@@ -279,6 +292,12 @@ public class Player {
 
 	}
 
+	public  void setStamina() {
+		stamina= OptionsPanel.getInstance().getTankStamina();
+	}
+	public void setFireRate(){
+		fireRate=OptionsPanel.getInstance().getFireRate();
+	}
 	// End of getter and setter functions
 }
 

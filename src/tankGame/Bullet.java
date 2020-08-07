@@ -1,30 +1,30 @@
 package tankGame;
 
 public class Bullet{
-	
+
 	private int timer=4 ;//seconds
 	private int owner;
 	private int angle;
 	private Point position;
 	private static final double bulletSpeed = 1.5;
-	
+
 	private GameEngine engine;
-	
+
 	public Bullet(int player, Point position, int angle, GameEngine e) {
 		this.owner = player;
 		this.angle = angle;
-		this.position = position;		
+		this.position = position;
 		this.timer *= 50; //set the time duration of the bullet's presence to 100 frames
 		this.engine=e;
 	}
-	
+
 	public Point getPosition() {
 		return position;
 	}
 	public int getAngle(){
 		return angle;
 	}
-	
+
 	public void removeBullet(){
 		if (this.owner==0){
 			engine.player1.decreaseNumberOfBulletsFired();
@@ -33,7 +33,7 @@ public class Bullet{
 		}
 		GameEngine.bulletList.remove(this);
 	}
-	
+
 	public void moveBullet(){
 		Point nextPoint = new Point(this.position.getXCoordinate()
 				+ (bulletSpeed * Math.cos(Math.toRadians(90-this.angle))),
@@ -79,15 +79,15 @@ public class Bullet{
 	private void flipBulletV(){
 		this.angle=(-this.angle) + 360;
 	}
-	
+
 	private void flipBulletH(){
 		if (this.angle>180){
 			this.angle = -this.angle+540;
 		}else{
 			this.angle=-this.angle+180;
 		}
-	}	
-	
+	}
+
 	public void tankCollision(){
 		//checks whether the bullet has collided with player1 or player2, calling the appropriate functions if so
 			if (collision(engine.player1)){
@@ -97,16 +97,16 @@ public class Bullet{
 				this.removeBullet();
 				engine.player2.hit();
 			}
-		
+
 	}
-	
+
 	private boolean collision(Player player){
 		//work out the distance between the centre of the bullet and the player
 		double distance = Point.distance(player.getCoordinates(),this.position);
 		//return whether they're overlapping
 		return (distance<=(GameEngine.tankWidth/2+GameEngine.bulletWidth/2));
 	}
-	
+
 	public double currentXSquare() {
 		// return the x value of the grid square the centre of the tank is currently in
 		for (int i =0; i<7;i++){
@@ -141,7 +141,7 @@ public class Bullet{
 		return -1;//Throw an exception
 
 	}
-	
+
 	private boolean wallCrashVertical(Point p, int w){
 		//when given a point p, returns whether or not the circular object of width w at that point is in/over a vertical wall
 		w=w/2;

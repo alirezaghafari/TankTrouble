@@ -202,7 +202,7 @@ public class OptionsPanel extends JPanel {
         wallStamina.setForeground(Color.white);
 
         tankStaminaSlider = new JSlider(40, 100, 70);
-        fireRateSlider = new JSlider(40, 100, 70);
+        fireRateSlider = new JSlider(10, 50, 30);
         wallStaminaSlider = new JSlider(40, 100, 70);
 
         add(optionsLabel);
@@ -236,5 +236,15 @@ public class OptionsPanel extends JPanel {
 
     public boolean isOpen() {
         return isShowing;
+    }
+
+
+
+    public double getTankStamina() {
+        return tankStaminaSlider.getValue();
+    }
+
+    public double getFireRate() {
+        return fireRateSlider.getValue();
     }
 }
