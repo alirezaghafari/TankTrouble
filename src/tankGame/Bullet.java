@@ -2,7 +2,7 @@ package tankGame;
 
 public class Bullet{
 	
-	private int timer;
+	private int timer=4 ;//seconds
 	private int owner;
 	private int angle;
 	private Point position;
@@ -14,7 +14,7 @@ public class Bullet{
 		this.owner = player;
 		this.angle = angle;
 		this.position = position;		
-		this.timer = 300; //set the time duration of the bullet's presence to 100 frames
+		this.timer *= 50; //set the time duration of the bullet's presence to 100 frames
 		this.engine=e;
 	}
 	
@@ -65,7 +65,7 @@ public class Bullet{
 		}
 		this.position=nextPoint;
 	}
-	
+
 	public boolean reduceTimer(){
 		//count down the timer.  If time is up, remove the bullet.  Return whether the bullet was removed
 		timer--;
@@ -75,7 +75,7 @@ public class Bullet{
 		}
 		return false;
 	}
-	
+
 	private void flipBulletV(){
 		this.angle=(-this.angle) + 360;
 	}

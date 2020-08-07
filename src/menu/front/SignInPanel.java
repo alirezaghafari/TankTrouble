@@ -162,7 +162,7 @@ public class SignInPanel extends JPanel {
         passwordField.setForeground(Color.white);
         passwordField.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void mouseReleased(MouseEvent e) {
                 isPasswordSaved=FileOperations.getInstance().isPasswordSaved(userNameField.getText());
                 if(isPasswordSaved)
                     passwordField.setText("myPassword");
