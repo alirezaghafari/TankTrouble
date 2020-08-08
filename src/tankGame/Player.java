@@ -64,7 +64,6 @@ public class Player {
 						- (speed * Math.sin(Math.toRadians(90-this.direction))));
 			}
 			if(wallCrashHorizontal(nextPoint,GameEngine.tankWidth)){//if the tank would go over a horizontal wall...
-				System.out.println("test");
 				nextPoint = new Point(this.coordinates.getXCoordinate()//just move it horizontally
 						+ (speed * Math.cos(Math.toRadians(90-this.direction))),
 						this.coordinates.getYCoordinate());
@@ -201,8 +200,6 @@ public class Player {
 			setStamina();
 			engine.roundOver();
 		}
-		System.out.println(stamina);
-		System.out.println(fireRate);
 	}
 
 	public double currentXSquare() {
@@ -281,16 +278,6 @@ public class Player {
 		return this.numberOfBulletsFired;
 	}
 
-	public void canGoForward(){
-		Point nextPoint = new Point(this.coordinates.getXCoordinate()
-				+ (forwardSpeed * Math.cos(Math.toRadians(90-this.direction))),
-				this.coordinates.getYCoordinate()
-						- (forwardSpeed * Math.sin(Math
-						.toRadians(90-this.direction))));
-	}
-	public void canGoReverse(){
-
-	}
 
 	public  void setStamina() {
 		stamina= OptionsPanel.getInstance().getTankStamina();

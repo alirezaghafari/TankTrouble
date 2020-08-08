@@ -106,27 +106,9 @@ public class GameLauncher extends Canvas implements Runnable {
     private int bulletFired2 = 0;
 
     private void tick() {
-        int systemCurrentTime = Integer.valueOf(java.time.LocalTime.now().toString().substring(6, 8));
         if (isSinglePlayer) {
-            for (int i = 1; i < 5; i++)
-                instructionsArray[i] = false;
-            instructionsArray[0] = true;
-            if (systemCurrentTime % 10 < 2) {
-                instructionsArray[1] = true;
-                instructionsArray[3] = false;
-            } else if (systemCurrentTime % 10 < 5) {
-                instructionsArray[1] = false;
-                instructionsArray[3] = true;
-            } else {
-                instructionsArray[1] = false;
-                instructionsArray[3] = false;
-            }
-            if (engine.player1.getCoordinates().getXCoordinate() - engine.player2.getCoordinates().getXCoordinate() < 50 && engine.player1.getCoordinates().getYCoordinate() - engine.player2.getCoordinates().getYCoordinate() < 50) {
-				instructionsArray[4] = true;
-            } else
-                instructionsArray[4] = false;
+            computerTankMovement();
         }
-
         //move the players as necessary{
         if (instructionsArray[0]) {
             engine.player1.goForward();
@@ -254,22 +236,20 @@ public class GameLauncher extends Canvas implements Runnable {
         GameLauncher game = new GameLauncher();
 
 
-        //set window size:
-        game.setPreferredSize(new Dimension(GameLauncher.xDimension, GameLauncher.yDimension));
-        game.setMaximumSize(new Dimension(GameLauncher.xDimension, GameLauncher.yDimension));
-        game.setMinimumSize(new Dimension(GameLauncher.xDimension, GameLauncher.yDimension));
+        //set map size:
+        game.setSize(GameLauncher.xDimension,GameLauncher.yDimension);
 
         mainFrame = new JFrame("Tank Trouble");
+        mainFrame.setLayout(null);
+        mainFrame.setSize(390,512);
         mainFrame.add(game);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setResizable(false);
         mainFrame.setLocationRelativeTo(null);
-        mainFrame.pack();
 
 
-        JPanel panel = new JPanel();
-        panel.setLocation(0, 390);
-        mainFrame.add(panel);
+        ScoresPanel scoresPanel=new ScoresPanel();
+        mainFrame.add(scoresPanel);
 
 
         mainFrame.setVisible(true);
@@ -293,6 +273,26 @@ public class GameLauncher extends Canvas implements Runnable {
             }
         });
         timeResetThread.start();
+    }
+    public void computerTankMovement(){
+        int systemCurrentTime = Integer.valueOf(java.time.LocalTime.now().toString().substring(6, 8));
+        for (int i = 1; i < 5; i++)
+            instructionsArray[i] = false;
+        instructionsArray[0] = true;
+        if (systemCurrentTime % 10 < 2) {
+            instructionsArray[1] = true;
+            instructionsArray[3] = false;
+        } else if (systemCurrentTime % 10 < 5) {
+            instructionsArray[1] = false;
+            instructionsArray[3] = true;
+        } else {
+            instructionsArray[1] = false;
+            instructionsArray[3] = false;
+        }
+        if (engine.player1.getCoordinates().getXCoordinate() - engine.player2.getCoordinates().getXCoordinate() < 50 && engine.player1.getCoordinates().getYCoordinate() - engine.player2.getCoordinates().getYCoordinate() < 50) {
+            instructionsArray[4] = true;
+        } else
+            instructionsArray[4] = false;
     }
 
 }

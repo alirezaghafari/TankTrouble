@@ -23,8 +23,8 @@ public class Square {
 		return "" + xCoordinate + "," + yCoordinate;
 	}
 	
-	public boolean equals(Square a){
-		return this.getXCoordinate()==a.getXCoordinate()&&this.getYCoordinate()==a.getYCoordinate();
+	public boolean equals(Square square){
+		return this.getXCoordinate()==square.getXCoordinate()&&this.getYCoordinate()==square.getYCoordinate();
 	}
 }
 
