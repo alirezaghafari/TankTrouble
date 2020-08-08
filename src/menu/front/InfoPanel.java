@@ -2,6 +2,7 @@ package menu.front;
 
 import menu.back.ClockDisplay;
 import tankGame.GameEngine;
+import tankGame.GameLauncher;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,6 +13,10 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import javax.swing.*;
 
+/**
+ * information panel which contains playingHours
+ * and username and th number of wins and losses
+ */
 public class InfoPanel extends JPanel {
 
     //this is to implement singleton design pattern
@@ -32,7 +37,6 @@ public class InfoPanel extends JPanel {
     private static JLabel timeLabel;
 
 
-
     private InfoPanel() {
         setLayout(null);
         setLocation(-220, 0);
@@ -40,13 +44,18 @@ public class InfoPanel extends JPanel {
         addFields();
     }
 
-    //set panel background
+    /**
+     * to set background
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); // paint the background image and scale it to fill the entire space
         g.drawImage(new ImageIcon("Documents/images/menuIcons/OptionsPanelBackground.jpg").getImage(), 0, 0, null);
     }
 
+    /**
+     * to set animation for panel
+     */
     public static class Animate {
 
         private static final int RUN_TIME = 200;
@@ -85,7 +94,9 @@ public class InfoPanel extends JPanel {
         }
 
     }
-
+    /**
+     * to set animation for panel
+     */
     private static Rectangle calculateProgress(Rectangle startBounds, Rectangle targetBounds, double progress) {
 
         Rectangle bounds = new Rectangle();
@@ -100,7 +111,9 @@ public class InfoPanel extends JPanel {
         return bounds;
 
     }
-
+    /**
+     * to set animation for panel
+     */
     public static Point calculateProgress(Point startPoint, Point targetPoint, double progress) {
 
         Point point = new Point();
@@ -115,7 +128,9 @@ public class InfoPanel extends JPanel {
         return point;
 
     }
-
+    /**
+     * to set animation for panel
+     */
     public static int calculateProgress(int startValue, int endValue, double fraction) {
 
         int value = 0;
@@ -126,7 +141,9 @@ public class InfoPanel extends JPanel {
         return value;
 
     }
-
+    /**
+     * to set animation for panel
+     */
     public static Dimension calculateProgress(Dimension startSize, Dimension targetSize, double progress) {
 
         Dimension size = new Dimension();
@@ -142,7 +159,9 @@ public class InfoPanel extends JPanel {
 
     }
 
-
+    /**
+     * add panel fields
+     */
     public void addFields() {
         goBackIcon = new JButton(new ImageIcon("Documents/images/menuIcons/GoBackIcon.jpg"));
         goBackIcon.setLocation(25, 35);
@@ -181,7 +200,6 @@ public class InfoPanel extends JPanel {
         singleWinsAndLosses = new JLabel();
 
 
-
         JLabel multiPlayerLabel = new JLabel("Multi player");
         multiPlayerLabel.setFont(new Font("Comic Sans MS", 10, 24));
         multiPlayerLabel.setSize(200, 30);
@@ -193,6 +211,9 @@ public class InfoPanel extends JPanel {
 
         reloadScorers();
 
+        JLabel tank2Label = new JLabel(new ImageIcon("src/tankLabel2.png"));
+        tank2Label.setLocation(85, 550);
+        tank2Label.setSize(50, 50);
 
 
         logOutButton = new JButton("Log Out");
@@ -230,7 +251,6 @@ public class InfoPanel extends JPanel {
         });
 
 
-
         add(userNameLabel);
         add(userIcon);
         add(goBackIcon);
@@ -239,6 +259,7 @@ public class InfoPanel extends JPanel {
         add(singleWinsAndLosses);
         add(multiPlayerLabel);
         add(multiWinsAndLosses);
+        add(tank2Label);
         add(logOutButton);
         add(exitButton);
 
@@ -246,6 +267,9 @@ public class InfoPanel extends JPanel {
 
     }
 
+    /**
+     * set panel visible
+     */
     public void showPanel() {
         if (!isShowing) {
             Rectangle from = new Rectangle(-220, 3, 220, 707);
@@ -260,6 +284,9 @@ public class InfoPanel extends JPanel {
         }
     }
 
+    /**
+     * set panel invisible
+     */
     public void hidePanel() {
         if (isShowing) {
             MenuFrame.getInstance().addItemsButton();
@@ -273,13 +300,16 @@ public class InfoPanel extends JPanel {
         }
     }
 
+    /**
+     * a method to counts the hours that user has played
+     */
     public void hoursCounter() {
-        Thread thread =new Thread(new Runnable() {
+        Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                ClockDisplay clock=new ClockDisplay();
-                while(true){
-                    timePlayed=clock.getCurrentTime();
+                ClockDisplay clock = new ClockDisplay();
+                while (true) {
+                    timePlayed = clock.getCurrentTime();
                     timeLabel.setText("<html>Hours you have played:<br>&#160; &#160;&#160;&#160;" + timePlayed + "</html>");
                     try {
                         TimeUnit.SECONDS.sleep(1);
@@ -299,9 +329,12 @@ public class InfoPanel extends JPanel {
         InfoPanel.getInstance().userNameLabel.setText(userName);
     }
 
-    public void reloadScorers(){
-        singleWins= GameEngine.player2_score;
-        singleLosses=GameEngine.player1_score;
+    /**
+     * a method to reset th number of wins and losses
+     */
+    public void reloadScorers() {
+        singleWins = GameEngine.player2_score;
+        singleLosses = GameEngine.player1_score;
 
         singleWinsAndLosses.setText("<html>Wins: " + singleWins + "<br>Losses: " + singleLosses + "</html>");
         singleWinsAndLosses.setFont(new Font("Comic Sans MS", 10, 18));
@@ -316,14 +349,11 @@ public class InfoPanel extends JPanel {
         multiWinsAndLosses.setForeground(Color.white);
     }
 
-    public JLabel getUserNameLabel() {
-        return userNameLabel;
-    }
 
-    public static void setTimePlayed(String timePlayed) {
-        InfoPanel.timePlayed = timePlayed;
-    }
-
+    /**
+     * to implements singleton pattern
+     * @return the instance of class
+     */
     public static InfoPanel getInstance() {
         return Objects.requireNonNullElseGet(infoPanel, () -> infoPanel = new InfoPanel());
     }

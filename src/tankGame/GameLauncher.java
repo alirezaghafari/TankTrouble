@@ -12,12 +12,15 @@ import java.awt.image.BufferedImage;
 import java.util.concurrent.TimeUnit;
 import javax.swing.*;
 
+/**
+ * the main class which run the and manage the game
+ */
 public class GameLauncher extends Canvas implements Runnable {
     //to keep it quiet:
     private static final long serialVersionUID = 1L;
-    private static int bulletPerSeconds=2;
+    private static int bulletPerSeconds = 2;
 
-    private GameEngine engine = new GameEngine();
+    private GameEngine engine;
     private static boolean isSinglePlayer;
 
     private static JFrame mainFrame;
@@ -27,6 +30,7 @@ public class GameLauncher extends Canvas implements Runnable {
 
     private boolean running = false;
     private Thread thread;
+
 
     //Images used:
     private BufferedImage background;
@@ -39,6 +43,7 @@ public class GameLauncher extends Canvas implements Runnable {
     private boolean[] instructionsArray = new boolean[10]; //UP,Left,Down,Right,Enter
 
     private synchronized void start() {
+        engine = new GameEngine();
         if (running) {
             return;
         }
@@ -231,29 +236,28 @@ public class GameLauncher extends Canvas implements Runnable {
         }
     }
 
+    static GameLauncher game;
+
     public static void launch(boolean isSinglePlayer) {
         GameLauncher.isSinglePlayer = isSinglePlayer;
-        GameLauncher game = new GameLauncher();
-
+        game = new GameLauncher();
+        ;
 
         //set map size:
-        game.setSize(GameLauncher.xDimension,GameLauncher.yDimension);
+        game.setSize(GameLauncher.xDimension, GameLauncher.yDimension);
 
         mainFrame = new JFrame("Tank Trouble");
         mainFrame.setLayout(null);
-        mainFrame.setSize(390,512);
+        mainFrame.setSize(390, 512);
         mainFrame.add(game);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setResizable(false);
         mainFrame.setLocationRelativeTo(null);
 
 
-        ScoresPanel scoresPanel=new ScoresPanel();
+        ScoresPanel scoresPanel = new ScoresPanel();
         mainFrame.add(scoresPanel);
 
-
-        mainFrame.setVisible(true);
-        game.start();
 
     }
 
@@ -261,20 +265,21 @@ public class GameLauncher extends Canvas implements Runnable {
         Thread timeResetThread = new Thread(new Runnable() {
             @Override
             public void run() {
-            	while (true) {
-					bulletFired1 = 0;
-					bulletFired2 = 0;
-					try {
-						TimeUnit.SECONDS.sleep(1);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
+                while (true) {
+                    bulletFired1 = 0;
+                    bulletFired2 = 0;
+                    try {
+                        TimeUnit.SECONDS.sleep(1);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         });
         timeResetThread.start();
     }
-    public void computerTankMovement(){
+
+    public void computerTankMovement() {
         int systemCurrentTime = Integer.valueOf(java.time.LocalTime.now().toString().substring(6, 8));
         for (int i = 1; i < 5; i++)
             instructionsArray[i] = false;
@@ -293,6 +298,19 @@ public class GameLauncher extends Canvas implements Runnable {
             instructionsArray[4] = true;
         } else
             instructionsArray[4] = false;
+    }
+
+    public static void hideFrame() {
+        mainFrame.setVisible(false);
+    }
+
+    public static void showFrame() {
+        mainFrame = new JFrame();
+        launch(true);
+        mainFrame.setVisible(true);
+        game.start();
+        Bullet.setBulletSpeed();
+
     }
 
 }

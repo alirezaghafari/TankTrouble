@@ -7,6 +7,9 @@ import java.awt.*;
 
 import java.awt.event.*;
 
+/**
+ * the sign in frame to enter username and password
+ */
 public class SignUpFrame extends JFrame {
     //this is to implement singleton design pattern
     private static SignUpFrame signUpFrame;
@@ -18,9 +21,11 @@ public class SignUpFrame extends JFrame {
     private static JButton signUpButton;
     private static JButton signInButton;
     private static JLabel rememberMe;
-    private static JLabel warningLabel=new JLabel();
+    private static JLabel warningLabel = new JLabel();
 
-
+    /**
+     * the constructor
+     */
     private SignUpFrame() {
         super("Login");
         setSize(600, 370);
@@ -40,12 +45,17 @@ public class SignUpFrame extends JFrame {
 
     }
 
-
+    /**
+     * set image background for panel
+     */
     public void setBackground() {
         setLayout(new BorderLayout());
         setContentPane(new JLabel(new ImageIcon("Documents/images/menuIcons/LoginBackground.jpg")));
     }
 
+    /**
+     * add text fields and buttons
+     */
     public void addFields() {
         userNameField = new HintTextField(" USERNAME:");
         userNameField.setLocation(178, 190);
@@ -55,7 +65,7 @@ public class SignUpFrame extends JFrame {
         userNameField.setForeground(Color.white);
 
         passwordField = new HintPasswordField(" PASSWORD:");
-        passwordField.setEchoChar((char)0);
+        passwordField.setEchoChar((char) 0);
         passwordField.setLocation(178, 240);
         passwordField.setSize(250, 40);
         passwordField.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
@@ -88,21 +98,20 @@ public class SignUpFrame extends JFrame {
         signUpButton.setSize(90, 25);
         signUpButton.setForeground(Color.darkGray);
         signUpButton.addActionListener(e -> {
-            boolean isInCorrectFormat= isInputInCorrectFormat(userNameField.getText())&& isInputInCorrectFormat(String.valueOf(passwordField.getPassword()));
-            if(passwordField.getPassword().length<6||userNameField.getText().length()<6)
+            boolean isInCorrectFormat = isInputInCorrectFormat(userNameField.getText()) && isInputInCorrectFormat(String.valueOf(passwordField.getPassword()));
+            if (passwordField.getPassword().length < 6 || userNameField.getText().length() < 6)
                 addWarningLabel("Fields must have at least 6 characters!");
-            else
-                if(isInCorrectFormat) {
-                    if (FileOperations.getInstance().signUpCheck(userNameField.getText(), String.valueOf(passwordField.getPassword()), checkBox.isSelected())) {
-                        InfoPanel.getInstance().setUserName(userNameField.getText());
-                        hideFrame();
-                        MenuFrame.showFrame();
-                    }else {
-                        addWarningLabel("Username already taken!");
-                    }
-                }else {
-                    addWarningLabel("Only a-z, 0-9, and underscores allowed!");
+            else if (isInCorrectFormat) {
+                if (FileOperations.getInstance().signUpCheck(userNameField.getText(), String.valueOf(passwordField.getPassword()), checkBox.isSelected())) {
+                    InfoPanel.getInstance().setUserName(userNameField.getText());
+                    hideFrame();
+                    MenuFrame.showFrame();
+                } else {
+                    addWarningLabel("Username already taken!");
                 }
+            } else {
+                addWarningLabel("Only a-z, 0-9, and underscores allowed!");
+            }
         });
 
 
@@ -117,9 +126,9 @@ public class SignUpFrame extends JFrame {
 
 
         warningLabel.setForeground(Color.RED);
-        warningLabel.setSize(500,20);
+        warningLabel.setSize(500, 20);
         warningLabel.setFont(new Font("Arial", 10, 14));
-        warningLabel.setLocation(183,320);
+        warningLabel.setLocation(183, 320);
 
 
         addItems();
@@ -191,9 +200,9 @@ public class SignUpFrame extends JFrame {
 
         @Override
         public void focusLost(FocusEvent e) {
-            if (this.getText().isEmpty()||passwordField.getPassword().equals(" PASSWORD:")) {
+            if (this.getText().isEmpty() || passwordField.getPassword().equals(" PASSWORD:")) {
                 super.setText(hint);
-                passwordField.setEchoChar((char)0);
+                passwordField.setEchoChar((char) 0);
                 showingHint = true;
             }
         }
@@ -204,6 +213,11 @@ public class SignUpFrame extends JFrame {
         }
     }
 
+
+    /**
+     * to implements singleton pattern
+     * @return the instance of class
+     */
     public static SignUpFrame getInstance() {
         if (signUpFrame == null)
             return signUpFrame = new SignUpFrame();
@@ -211,22 +225,25 @@ public class SignUpFrame extends JFrame {
             return signUpFrame;
     }
 
-
-
+    /**
+     * make panel visible
+     */
     public static void showFrame() {
         SignUpFrame signUpFrame = SignUpFrame.getInstance();
         SignUpFrame.getInstance().setLocationRelativeTo(null);
         SignUpFrame.getInstance().removeWarningLabel();
         userNameField.setText(" USERNAME:");
         passwordField.setText(" PASSWORD:");
-        passwordField.setEchoChar((char)0);
+        passwordField.setEchoChar((char) 0);
         checkBox.setSelected(false);
         signUpFrame.setVisible(true);
         signUpFrame.revalidate();
         signUpFrame.repaint();
     }
-
-    public  void hideFrame() {
+    /**
+     * make panel invisible
+     */
+    public void hideFrame() {
         SignUpFrame signUpFrame = SignUpFrame.getInstance();
         signUpFrame.setVisible(false);
     }
@@ -254,24 +271,27 @@ public class SignUpFrame extends JFrame {
         repaint();
 
     }
-    public boolean isInputInCorrectFormat(String input){
-        boolean isInCorrectFormat=true;
-        for(char ch:input.toCharArray()){
-            int asciiCode= ch;
-            if(asciiCode>122||(asciiCode<97&&asciiCode>90)||(asciiCode<65&&asciiCode>57)||asciiCode<48)
-                if(asciiCode!=45&&asciiCode!=95)
-                    isInCorrectFormat=false;
+
+    public boolean isInputInCorrectFormat(String input) {
+        boolean isInCorrectFormat = true;
+        for (char ch : input.toCharArray()) {
+            int asciiCode = ch;
+            if (asciiCode > 122 || (asciiCode < 97 && asciiCode > 90) || (asciiCode < 65 && asciiCode > 57) || asciiCode < 48)
+                if (asciiCode != 45 && asciiCode != 95)
+                    isInCorrectFormat = false;
         }
         return isInCorrectFormat;
     }
-    public void addWarningLabel(String message){
+
+    public void addWarningLabel(String message) {
         removeWarningLabel();
         warningLabel.setText(message);
         add(warningLabel);
         revalidate();
         repaint();
     }
-    public void removeWarningLabel(){
+
+    public void removeWarningLabel() {
         remove(warningLabel);
         revalidate();
         repaint();

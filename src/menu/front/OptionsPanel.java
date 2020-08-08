@@ -10,7 +10,10 @@ import java.util.Objects;
 
 import javax.swing.*;
 
-
+/**
+ * a panel which can move over the menu frame
+ * this panel has the sliders
+ */
 public class OptionsPanel extends JPanel {
 
     //this is to implement singleton design pattern
@@ -22,23 +25,32 @@ public class OptionsPanel extends JPanel {
     private static JButton goBackIcon;
     private static JLabel tankStamina;
     private static JLabel fireRate;
-    private static JLabel wallStamina;
+    private static JLabel bulletSpeed;
     private static JSlider tankStaminaSlider;
     private static JSlider fireRateSlider;
-    private static JSlider wallStaminaSlider;
+    private static JSlider bulletSpeedSlider;
 
+    /**
+     * to set image background for panel
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); // paint the background image and scale it to fill the entire space
         g.drawImage(new ImageIcon("Documents/images/menuIcons/OptionsPanelBackground.jpg").getImage(), 0, 0, null);
     }
 
+    /**
+     * the constructor
+     */
     private OptionsPanel() {
         setLayout(null);
         setLocation(1275, 0);
         addFields();
     }
 
+    /**
+     * to set animation for panel
+     */
     public static class Animate {
 
         private static final int RUN_TIME = 200;
@@ -77,7 +89,9 @@ public class OptionsPanel extends JPanel {
         }
 
     }
-
+    /**
+     * to set animation for panel
+     */
     private static Rectangle calculateProgress(Rectangle startBounds, Rectangle targetBounds, double progress) {
 
         Rectangle bounds = new Rectangle();
@@ -92,7 +106,9 @@ public class OptionsPanel extends JPanel {
         return bounds;
 
     }
-
+    /**
+     * to set animation for panel
+     */
     public static Point calculateProgress(Point startPoint, Point targetPoint, double progress) {
 
         Point point = new Point();
@@ -107,7 +123,9 @@ public class OptionsPanel extends JPanel {
         return point;
 
     }
-
+    /**
+     * to set animation for panel
+     */
     public static int calculateProgress(int startValue, int endValue, double fraction) {
 
         int value = 0;
@@ -118,7 +136,9 @@ public class OptionsPanel extends JPanel {
         return value;
 
     }
-
+    /**
+     * to set animation for panel
+     */
     public static Dimension calculateProgress(Dimension startSize, Dimension targetSize, double progress) {
 
         Dimension size = new Dimension();
@@ -134,10 +154,17 @@ public class OptionsPanel extends JPanel {
 
     }
 
+    /**
+     * to implements singleton pattern
+     * @return the instance of class
+     */
     public static OptionsPanel getInstance() {
         return Objects.requireNonNullElseGet(optionsPanel, () -> optionsPanel = new OptionsPanel());
     }
 
+    /**
+     * make panel visible
+     */
     public void showPanel() {
         if (!isShowing) {
             Rectangle from = new Rectangle(1275, 3, 260, 707);
@@ -150,6 +177,9 @@ public class OptionsPanel extends JPanel {
         }
     }
 
+    /**
+     * make panel invisible
+     */
     public void hidePanel() {
         if (isShowing) {
             Rectangle from = new Rectangle(1015, 3, 260, 707);
@@ -163,6 +193,9 @@ public class OptionsPanel extends JPanel {
         }
     }
 
+    /**
+     * add sliders to the panel
+     */
     public void addFields() {
 
         goBackIcon = new JButton(new ImageIcon("Documents/images/menuIcons/GoBackIconReverse.jpg"));
@@ -195,27 +228,35 @@ public class OptionsPanel extends JPanel {
         fireRate.setForeground(Color.white);
 
 
-        wallStamina = new JLabel("Wall stamina");
-        wallStamina.setSize(200, 30);
-        wallStamina.setLocation(20, 450);
-        wallStamina.setFont(new Font("Comic Sans MS", 10, 24));
-        wallStamina.setForeground(Color.white);
+        bulletSpeed = new JLabel("Bullet speed");
+        bulletSpeed.setSize(200, 30);
+        bulletSpeed.setLocation(20, 450);
+        bulletSpeed.setFont(new Font("Comic Sans MS", 10, 24));
+        bulletSpeed.setForeground(Color.white);
 
         tankStaminaSlider = new JSlider(40, 100, 70);
         fireRateSlider = new JSlider(10, 50, 30);
-        wallStaminaSlider = new JSlider(40, 100, 70);
+        bulletSpeedSlider = new JSlider(40, 100, 70);
 
         add(optionsLabel);
-        addSliders(tankStaminaSlider, 30, 200,40,100);
-        addSliders(fireRateSlider, 30, 330,10,50);
-        addSliders(wallStaminaSlider, 30, 470,40,100);
+        addSliders(tankStaminaSlider, 30, 200, 40, 100);
+        addSliders(fireRateSlider, 30, 330, 10, 50);
+        addSliders(bulletSpeedSlider, 30, 470, 40, 100);
         add(goBackIcon);
         add(tankStamina);
         add(fireRate);
-        add(wallStamina);
+        add(bulletSpeed);
     }
 
-    public void addSliders(JSlider slider, int x, int y,int min,int max) {
+    /**
+     * add sliders to the panel
+     * @param slider the JSlider
+     * @param x xCoordinate
+     * @param y yCoordinate
+     * @param min min value
+     * @param max max value
+     */
+    public void addSliders(JSlider slider, int x, int y, int min, int max) {
         slider.setLocation(x, y);
         slider.setSize(200, 70);
         slider.setForeground(Color.white);
@@ -234,11 +275,13 @@ public class OptionsPanel extends JPanel {
         add(slider);
     }
 
+    /**
+     * a method to find that the panel is showing or not
+     * @return whether the panel is showing or not
+     */
     public boolean isOpen() {
         return isShowing;
     }
-
-
 
     public double getTankStamina() {
         return tankStaminaSlider.getValue();
@@ -246,5 +289,9 @@ public class OptionsPanel extends JPanel {
 
     public double getFireRate() {
         return fireRateSlider.getValue();
+    }
+
+    public int getBulletSpeed() {
+        return bulletSpeedSlider.getValue();
     }
 }

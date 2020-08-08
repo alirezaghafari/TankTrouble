@@ -8,6 +8,7 @@ import java.awt.event.*;
 
 /**
  * The frame which contains start buttons and options
+ * this is the main menu of game
  */
 public class MenuFrame extends JFrame {
     private static JButton singlePlayerButton;
@@ -19,6 +20,9 @@ public class MenuFrame extends JFrame {
     //this is to implement singleton design pattern
     private static MenuFrame menuFrame;
 
+    /**
+     * the constructor
+     */
     private MenuFrame() {
         super("TANK TROUBLE");
         setSize(1275, 735);
@@ -51,11 +55,17 @@ public class MenuFrame extends JFrame {
 
     }
 
+    /**
+     * to set image background for frame
+     */
     public void setBackGround() {
         setLayout(new BorderLayout());
         setContentPane(new JLabel(new ImageIcon("Documents/images/menuIcons/MenuBackground.jpg")));
     }
 
+    /**
+     * add three main buttons
+     */
     public void addButtons() {
 
         itemsButton = new JButton(new ImageIcon("Documents/images/menuIcons/ItemsIcon.jpg"));
@@ -77,8 +87,7 @@ public class MenuFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 hideFrame();
-                GameLauncher gameLauncher=new GameLauncher();
-                gameLauncher.launch(true);
+                GameLauncher.showFrame();
             }
         });
 
@@ -114,31 +123,36 @@ public class MenuFrame extends JFrame {
 
     }
 
-    public static MenuFrame getInstance() {
-        if (menuFrame == null)
-            return menuFrame = new MenuFrame();
-        else
-            return menuFrame;
-    }
-
+    /**
+     * set frame visible
+     */
     public static void showFrame() {
         MenuFrame menuFrame = MenuFrame.getInstance();
         MenuFrame.getInstance().setLocationRelativeTo(null);
         menuFrame.setVisible(true);
         menuFrame.revalidate();
         menuFrame.repaint();
+
     }
 
+    /**
+     * set frame invisible
+     */
     public static void hideFrame() {
         MenuFrame menuFrame = MenuFrame.getInstance();
         menuFrame.setVisible(false);
+
     }
 
+    /**
+     * set items to frame
+     */
     public void addItemsButton() {
         add(itemsButton);
         revalidate();
         repaint();
     }
+
 
     public void removeItemsButton() {
         remove(itemsButton);
@@ -147,5 +161,15 @@ public class MenuFrame extends JFrame {
     }
 
 
+    /**
+     * to implements singleton pattern
+     * @return the instance of class
+     */
+    public static MenuFrame getInstance() {
+        if (menuFrame == null)
+            return menuFrame = new MenuFrame();
+        else
+            return menuFrame;
+    }
 }
 
