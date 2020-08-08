@@ -3,19 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="f333d852-8d30-410c-87b3-6a8006cafc40" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/back/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/back/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/ScoresPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/ScoresPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/scoresBarBackground.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/scoresBarBackground.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/tankGame/GameLauncher$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/tankGame/GameLauncher$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/tankGame/GameLauncher.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/tankGame/GameLauncher.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/tankGame/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/tankGame/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/tankGame/Square.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/tankGame/Square.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menu/back/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/back/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/menu/front/ScoresPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/front/ScoresPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scoresBarBackground.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/scoresBarBackground.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tank1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/tank1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tank2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/tank2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tankGame/GameLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tankGame/GameLauncher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tankGame/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tankGame/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tankGame/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tankGame/Square.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -156,7 +147,7 @@
       <workItem from="1596145972938" duration="26204000" />
       <workItem from="1596392584258" duration="30644000" />
       <workItem from="1596579447612" duration="994000" />
-      <workItem from="1596610998660" duration="50302000" />
+      <workItem from="1596610998660" duration="51788000" />
     </task>
     <servers />
   </component>

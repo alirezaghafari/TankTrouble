@@ -1,7 +1,0 @@
-Alireza#false
-aaaaaaaaaaaa#false
-vvvvvvvvv#false
-1111111#false
-222222#true
-2222222#false
-Alirezaa#false
