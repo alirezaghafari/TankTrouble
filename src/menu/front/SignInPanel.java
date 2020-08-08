@@ -8,6 +8,9 @@ import java.awt.event.*;
 import java.util.Objects;
 import javax.swing.*;
 
+/**
+ * the sign in frame to enter username and password
+ */
 public class SignInPanel extends JPanel {
 
     //this is to implement singleton design pattern
@@ -17,25 +20,33 @@ public class SignInPanel extends JPanel {
     private static JPasswordField passwordField;
     private static JButton signUpButton;
     private static JButton signInButton;
-    private static boolean isPasswordSaved=false;
-    private static JLabel warningLabel=new JLabel();
+    private static boolean isPasswordSaved = false;
+    private static JLabel warningLabel = new JLabel();
 
 
     private static boolean isShowing;
 
-
+    /**
+     * the constructor
+     */
     private SignInPanel() {
         setLayout(null);
         setLocation(0, -347);
         addFields();
     }
 
+    /**
+     * set image background for panel
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); // paint the background image and scale it to fill the entire space
         g.drawImage(new ImageIcon("Documents/images/menuIcons/LoginBackground2.jpg").getImage(), 0, 0, null);
     }
 
+    /**
+     * set animation for panel
+     */
     public static class Animate {
 
         private static final int RUN_TIME = 200;
@@ -74,7 +85,9 @@ public class SignInPanel extends JPanel {
         }
 
     }
-
+    /**
+     * set animation for panel
+     */
     private static Rectangle calculateProgress(Rectangle startBounds, Rectangle targetBounds, double progress) {
         Rectangle bounds = new Rectangle();
         if (startBounds != null && targetBounds != null) {
@@ -83,7 +96,9 @@ public class SignInPanel extends JPanel {
         }
         return bounds;
     }
-
+    /**
+     * set animation for panel
+     */
     public static Point calculateProgress(Point startPoint, Point targetPoint, double progress) {
         Point point = new Point();
         if (startPoint != null && targetPoint != null) {
@@ -92,7 +107,9 @@ public class SignInPanel extends JPanel {
         }
         return point;
     }
-
+    /**
+     * set animation for panel
+     */
     public static int calculateProgress(int startValue, int endValue, double fraction) {
         int value = 0;
         int distance = endValue - startValue;
@@ -100,7 +117,9 @@ public class SignInPanel extends JPanel {
         value += startValue;
         return value;
     }
-
+    /**
+     * set animation for panel
+     */
     public static Dimension calculateProgress(Dimension startSize, Dimension targetSize, double progress) {
         Dimension size = new Dimension();
         if (startSize != null && targetSize != null) {
@@ -110,16 +129,23 @@ public class SignInPanel extends JPanel {
         return size;
     }
 
+    /**
+     * to implements singleton pattern
+     * @return the instance of class
+     */
     public static SignInPanel getInstance() {
         return Objects.requireNonNullElseGet(signInPanel, () -> signInPanel = new SignInPanel());
     }
 
+    /**
+     * make panel visible
+     */
     public void showPanel() {
         if (!isShowing) {
             removeWarningLabel();
-            userNameField.setText("  USERNAME:");
-            passwordField.setText("  PASSWORD:");
-            passwordField.setEchoChar((char)0);
+            userNameField.setText(" USERNAME:");
+            passwordField.setText(" PASSWORD:");
+            passwordField.setEchoChar((char) 0);
             signInPanel.revalidate();
             signInPanel.repaint();
             Rectangle from = new Rectangle(20, -347, 560, 347);
@@ -132,6 +158,9 @@ public class SignInPanel extends JPanel {
         }
     }
 
+    /**
+     * make panel invisible
+     */
     public void hidePanel() {
         if (isShowing) {
             SignUpFrame.getInstance().addItems();
@@ -146,25 +175,30 @@ public class SignInPanel extends JPanel {
         }
     }
 
+    /**
+     * add text fields and buttons
+     */
     public void addFields() {
-        userNameField = new HintTextField("  USERNAME:");
-        userNameField.setLocation(153, 200);
+        userNameField = new HintTextField(" USERNAME:");
+        userNameField.setLocation(155, 200);
         userNameField.setSize(250, 40);
+        userNameField.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
         userNameField.setBackground(Color.gray);
         userNameField.setForeground(Color.white);
 
 
-        passwordField = new HintPasswordField("  PASSWORD:");
-        passwordField.setEchoChar((char)0);
+        passwordField = new HintPasswordField(" PASSWORD:");
+        passwordField.setEchoChar((char) 0);
+        passwordField.setLocation(155, 250);
         passwordField.setSize(250, 40);
-        passwordField.setLocation(153, 250);
+        passwordField.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
         passwordField.setBackground(Color.gray);
         passwordField.setForeground(Color.white);
         passwordField.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                isPasswordSaved=FileOperations.getInstance().isPasswordSaved(userNameField.getText());
-                if(isPasswordSaved)
+            public void mouseReleased(MouseEvent e) {
+                isPasswordSaved = FileOperations.getInstance().isPasswordSaved(userNameField.getText());
+                if (isPasswordSaved)
                     passwordField.setText("myPassword");
             }
         });
@@ -176,14 +210,13 @@ public class SignInPanel extends JPanel {
         signInButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(FileOperations.getInstance().isPasswordSaved(userNameField.getText())) {
+                if (FileOperations.getInstance().isPasswordSaved(userNameField.getText())) {
                     InfoPanel.getInstance().setUserName(userNameField.getText());
                     hidePanel();
                     SignUpFrame.getInstance().hideFrame();
                     MenuFrame.showFrame();
-                    isPasswordSaved=false;
-                }
-                else {
+                    isPasswordSaved = false;
+                } else {
                     if (FileOperations.getInstance().signInCheck(userNameField.getText(), String.valueOf(passwordField.getPassword()))) {
                         InfoPanel.getInstance().setUserName(userNameField.getText());
                         hidePanel();
@@ -211,9 +244,9 @@ public class SignInPanel extends JPanel {
         });
 
         warningLabel.setForeground(Color.RED);
-        warningLabel.setSize(500,20);
+        warningLabel.setSize(500, 20);
         warningLabel.setFont(new Font("Arial", 10, 14));
-        warningLabel.setLocation(170,323);
+        warningLabel.setLocation(170, 323);
 
 
         add(signInButton);
@@ -239,7 +272,7 @@ public class SignInPanel extends JPanel {
 
         @Override
         public void focusGained(FocusEvent e) {
-            if (this.getText().isEmpty() || this.getText().equals("  PASSWORD:") || this.getText().equals("  USERNAME:")) {
+            if (this.getText().isEmpty() || this.getText().equals(" PASSWORD:") || this.getText().equals(" USERNAME:")) {
                 super.setText("");
                 showingHint = false;
             }
@@ -276,7 +309,7 @@ public class SignInPanel extends JPanel {
 
         @Override
         public void focusGained(FocusEvent e) {
-            if (this.getText().isEmpty() || this.getText().equals("  PASSWORD:") || this.getText().equals("  USERNAME:")) {
+            if (this.getText().isEmpty() || this.getText().equals(" PASSWORD:") || this.getText().equals(" USERNAME:")) {
                 super.setText("");
                 passwordField.setEchoChar('*');
                 showingHint = false;
@@ -285,9 +318,9 @@ public class SignInPanel extends JPanel {
 
         @Override
         public void focusLost(FocusEvent e) {
-            if (this.getText().isEmpty()||passwordField.getPassword().equals("  PASSWORD:")) {
+            if (this.getText().isEmpty() || passwordField.getPassword().equals(" PASSWORD:")) {
                 super.setText(hint);
-                passwordField.setEchoChar((char)0);
+                passwordField.setEchoChar((char) 0);
                 showingHint = true;
             }
         }
@@ -298,14 +331,15 @@ public class SignInPanel extends JPanel {
         }
     }
 
-    public void addWarningLabel(String message){
+    public void addWarningLabel(String message) {
         removeWarningLabel();
         warningLabel.setText(message);
         add(warningLabel);
         revalidate();
         repaint();
     }
-    public void removeWarningLabel(){
+
+    public void removeWarningLabel() {
         remove(warningLabel);
         revalidate();
         repaint();

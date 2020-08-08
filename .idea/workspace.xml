@@ -2,27 +2,44 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f333d852-8d30-410c-87b3-6a8006cafc40" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/menu/back/ClockDisplay.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/menu/back/DisplayNumber.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documents/LoginInfo/listOfUsers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/LoginInfo/listOfUsers.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/InfoPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/InfoPanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/back/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/back/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/InfoPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/InfoPanel$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/InfoPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/InfoPanel$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/InfoPanel$Animate$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/InfoPanel$Animate$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/InfoPanel$Animate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/InfoPanel$Animate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/InfoPanel$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/InfoPanel$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/InfoPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/InfoPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignInPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignInPanel$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignInPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignInPanel$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignInPanel$HintPasswordField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignInPanel$HintPasswordField.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignInPanel$HintTextField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignInPanel$HintTextField.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignInPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignInPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignUpFrame$HintPasswordField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignUpFrame$HintPasswordField.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignUpFrame$HintTextField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignUpFrame$HintTextField.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignUpFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/SignUpFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/MenuFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/MenuFrame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/MenuFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/MenuFrame$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/MenuFrame$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/MenuFrame$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/MenuFrame$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/MenuFrame$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/MenuFrame$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/MenuFrame$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/MenuFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/MenuFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/OptionsPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/OptionsPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/menu/front/ScoresPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/menu/front/ScoresPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/tankGame/Bullet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/tankGame/Bullet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/tankGame/GameEngine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/tankGame/GameEngine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/tankGame/GameLauncher$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/tankGame/GameLauncher$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/tankGame/GameLauncher.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/tankGame/GameLauncher.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/tankGame/Maze.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/tankGame/Maze.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinalProject/tankGame/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinalProject/tankGame/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menu/back/ClockDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/back/ClockDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menu/back/DisplayNumber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/back/DisplayNumber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menu/back/FileOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/back/FileOperations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menu/back/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/back/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/menu/front/InfoPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/front/InfoPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menu/front/MenuFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/front/MenuFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menu/front/OptionsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/front/OptionsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menu/front/ScoresPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/front/ScoresPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/menu/front/SignInPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/front/SignInPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/menu/front/SignUpFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/front/SignUpFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tankGame/BufferedImageLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tankGame/BufferedImageLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tankGame/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tankGame/Bullet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tankGame/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tankGame/GameEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tankGame/GameLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tankGame/GameLauncher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tankGame/KeyboardInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tankGame/KeyboardInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tankGame/Maze.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tankGame/Maze.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tankGame/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tankGame/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tankGame/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tankGame/Square.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -131,7 +148,7 @@
       <module name="FinalProject" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="tankGame.*" />
+          <option name="PATTERN" value="menu.front.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -163,7 +180,9 @@
       <workItem from="1596145972938" duration="26204000" />
       <workItem from="1596392584258" duration="30644000" />
       <workItem from="1596579447612" duration="994000" />
-      <workItem from="1596610998660" duration="34029000" />
+      <workItem from="1596610998660" duration="57698000" />
+      <workItem from="1596895254800" duration="11719000" />
+      <workItem from="1596911105640" duration="3115000" />
     </task>
     <servers />
   </component>
