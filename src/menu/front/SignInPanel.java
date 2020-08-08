@@ -117,8 +117,8 @@ public class SignInPanel extends JPanel {
     public void showPanel() {
         if (!isShowing) {
             removeWarningLabel();
-            userNameField.setText("  USERNAME:");
-            passwordField.setText("  PASSWORD:");
+            userNameField.setText(" USERNAME:");
+            passwordField.setText(" PASSWORD:");
             passwordField.setEchoChar((char)0);
             signInPanel.revalidate();
             signInPanel.repaint();
@@ -147,17 +147,19 @@ public class SignInPanel extends JPanel {
     }
 
     public void addFields() {
-        userNameField = new HintTextField("  USERNAME:");
-        userNameField.setLocation(153, 200);
+        userNameField = new HintTextField(" USERNAME:");
+        userNameField.setLocation(155, 200);
         userNameField.setSize(250, 40);
+        userNameField.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
         userNameField.setBackground(Color.gray);
         userNameField.setForeground(Color.white);
 
 
-        passwordField = new HintPasswordField("  PASSWORD:");
+        passwordField = new HintPasswordField(" PASSWORD:");
         passwordField.setEchoChar((char)0);
+        passwordField.setLocation(155, 250);
         passwordField.setSize(250, 40);
-        passwordField.setLocation(153, 250);
+        passwordField.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
         passwordField.setBackground(Color.gray);
         passwordField.setForeground(Color.white);
         passwordField.addMouseListener(new MouseAdapter() {
@@ -239,7 +241,7 @@ public class SignInPanel extends JPanel {
 
         @Override
         public void focusGained(FocusEvent e) {
-            if (this.getText().isEmpty() || this.getText().equals("  PASSWORD:") || this.getText().equals("  USERNAME:")) {
+            if (this.getText().isEmpty() || this.getText().equals(" PASSWORD:") || this.getText().equals(" USERNAME:")) {
                 super.setText("");
                 showingHint = false;
             }
@@ -276,7 +278,7 @@ public class SignInPanel extends JPanel {
 
         @Override
         public void focusGained(FocusEvent e) {
-            if (this.getText().isEmpty() || this.getText().equals("  PASSWORD:") || this.getText().equals("  USERNAME:")) {
+            if (this.getText().isEmpty() || this.getText().equals(" PASSWORD:") || this.getText().equals(" USERNAME:")) {
                 super.setText("");
                 passwordField.setEchoChar('*');
                 showingHint = false;
@@ -285,7 +287,7 @@ public class SignInPanel extends JPanel {
 
         @Override
         public void focusLost(FocusEvent e) {
-            if (this.getText().isEmpty()||passwordField.getPassword().equals("  PASSWORD:")) {
+            if (this.getText().isEmpty()||passwordField.getPassword().equals(" PASSWORD:")) {
                 super.setText(hint);
                 passwordField.setEchoChar((char)0);
                 showingHint = true;

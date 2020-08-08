@@ -206,16 +206,16 @@ public class OptionsPanel extends JPanel {
         wallStaminaSlider = new JSlider(40, 100, 70);
 
         add(optionsLabel);
-        addSliders(tankStaminaSlider, 30, 200);
-        addSliders(fireRateSlider, 30, 330);
-        addSliders(wallStaminaSlider, 30, 470);
+        addSliders(tankStaminaSlider, 30, 200,40,100);
+        addSliders(fireRateSlider, 30, 330,10,50);
+        addSliders(wallStaminaSlider, 30, 470,40,100);
         add(goBackIcon);
         add(tankStamina);
         add(fireRate);
         add(wallStamina);
     }
 
-    public void addSliders(JSlider slider, int x, int y) {
+    public void addSliders(JSlider slider, int x, int y,int min,int max) {
         slider.setLocation(x, y);
         slider.setSize(200, 70);
         slider.setForeground(Color.white);
@@ -223,10 +223,10 @@ public class OptionsPanel extends JPanel {
         Hashtable<Integer, JLabel> labels = new Hashtable<>();
         JLabel lowLabel = new JLabel("Low");
         lowLabel.setForeground(Color.white);
-        labels.put(40, lowLabel);
+        labels.put(min, lowLabel);
         JLabel highLabel = new JLabel("High");
         highLabel.setForeground(Color.white);
-        labels.put(100, highLabel);
+        labels.put(max, highLabel);
         slider.setLabelTable(labels);
         slider.setPaintLabels(true);
 

@@ -72,7 +72,7 @@ public class MenuFrame extends JFrame {
         Icon singleIcon = new ImageIcon("Documents/images/menuIcons/SinglePlayerIcon.jpg");
         singlePlayerButton = new JButton(singleIcon);
         singlePlayerButton.setLocation(290, 600);
-        singlePlayerButton.setSize(200, 80);
+        singlePlayerButton.setSize(200, 75);
         singlePlayerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -86,13 +86,13 @@ public class MenuFrame extends JFrame {
         Icon multiIcon = new ImageIcon("Documents/images/menuIcons/MultiIcon.jpg");
         multiPlayerButton = new JButton(multiIcon);
         multiPlayerButton.setLocation(545, 600);
-        multiPlayerButton.setSize(200, 80);
+        multiPlayerButton.setSize(200, 75);
 
 
         Icon optionsIcon = new ImageIcon("Documents/images/menuIcons/OptionsIcon.jpg");
         optionsButton = new JButton(optionsIcon);
         optionsButton.setLocation(800, 600);
-        optionsButton.setSize(200, 80);
+        optionsButton.setSize(200, 75);
         optionsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
